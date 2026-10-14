@@ -86,4 +86,4 @@ dotnet publish -c Release
 
 ## 许可证
 
-尚未指定。
+本项目采用 [MIT 许可证](LICENSE)。
