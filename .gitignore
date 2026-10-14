@@ -1,0 +1,25 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# 本地反编译的游戏源码，仅作参考，不属于本项目，体积也很大
+/Decompiled/
+
+# 构建产物
+bin/
+obj/
+/output/
+
+# 本地临时文件（提示词、下载的参考页面等）
+/tmp/
+
+# IDE / 编辑器个人配置
+.idea/
+.vs/
+*.user
+*.suo
+*.DotSettings.user
+
+# 系统文件
+Thumbs.db
+.DS_Store

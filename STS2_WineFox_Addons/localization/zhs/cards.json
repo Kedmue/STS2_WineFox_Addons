@@ -1,0 +1,4 @@
+{
+  "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.title": "自给自足",
+  "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.description": "每回合开始时随机获得{Food:diff()}个[gold]普通食物[/gold]。"
+}
