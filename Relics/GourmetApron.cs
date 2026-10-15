@@ -17,7 +17,7 @@ namespace STS2_WineFox_Addons.Relics
         public override RelicRarity Rarity => RelicRarity.Uncommon;
 
         public override RelicAssetProfile AssetProfile =>
-            Icons("res://STS2_WineFox_Addons/potions/foods/tomato.png");
+            Icons("res://STS2_WineFox_Addons/relics/gourmet_apron.png");
 
         public override async Task AfterPlayerTurnStart(
             PlayerChoiceContext choiceContext,
