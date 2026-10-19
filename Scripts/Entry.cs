@@ -59,6 +59,7 @@ namespace STS2_WineFox_Addons.Scripts
                 patcher.RegisterPatch<WineFoxPartyCheckBypassPatch>();
                 patcher.RegisterPatch<BossDishRewardPatch>();
                 patcher.RegisterPatch<FoodEatLabelPatch>();
+                patcher.RegisterPatch<HextechInteropInitializationPatch>();
                 AddonMultiplayerSyncPatches.AddTo(patcher);
                 patcher.PatchAll();
             }

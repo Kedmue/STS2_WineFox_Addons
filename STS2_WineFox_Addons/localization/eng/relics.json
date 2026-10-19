@@ -1,0 +1,11 @@
+{
+  "STS2_WINE_FOX_ADDONS_RELIC_GOURMET_APRON.title": "Gourmet Apron",
+  "STS2_WINE_FOX_ADDONS_RELIC_GOURMET_APRON.description": "At the start of each combat, gain [blue]2[/blue] [gold]Regen[/gold] for each food in your potion slots.",
+  "STS2_WINE_FOX_ADDONS_RELIC_GOURMET_APRON.flavor": "An apron steeped in the smell of good cooking. Wear it, and it feels like you could taste every dish in the world.",
+  "STS2_WINE_FOX_ADDONS_RELIC_EMERALD_BADGE.title": "Emerald Badge",
+  "STS2_WINE_FOX_ADDONS_RELIC_EMERALD_BADGE.description": "[blue]50[/blue]% off card removal at the [blue]Merchant[/blue]!",
+  "STS2_WINE_FOX_ADDONS_RELIC_EMERALD_BADGE.flavor": "The villagers use these to remember who is worth haggling with.",
+  "WINE_FOX_REHEATED_AROMA_RUNE.title": "Lingering Aftertaste",
+  "WINE_FOX_REHEATED_AROMA_RUNE.description": "During combat, whenever you use a [gold]Food[/gold], gain [blue]1[/blue] Energy and draw [blue]1[/blue] card. Triggers up to [blue]2[/blue] times each combat.",
+  "WINE_FOX_REHEATED_AROMA_RUNE.flavor": "A good dish deserves a second warming. A fox will not even spare the aftertaste."
+}

@@ -1,0 +1,4 @@
+{
+  "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.title": "Self-Sufficient",
+  "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.description": "At the start of each turn, gain {Food:diff()} random [gold]common food[/gold]."
+}

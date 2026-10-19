@@ -1,5 +1,11 @@
 {
   "STS2_WINE_FOX_ADDONS_RELIC_GOURMET_APRON.title": "美食家围裙",
   "STS2_WINE_FOX_ADDONS_RELIC_GOURMET_APRON.description": "在每场战斗开始时，你的[gold]药水[/gold]栏位每有[blue]1[/blue]个[gold]食物[/gold]，就获得[blue]2[/blue]层[gold]再生[/gold]。",
-  "STS2_WINE_FOX_ADDONS_RELIC_GOURMET_APRON.flavor": "沾满香气的围裙，穿上它仿佛能尝遍天下美味。"
+  "STS2_WINE_FOX_ADDONS_RELIC_GOURMET_APRON.flavor": "沾满香气的围裙，穿上它仿佛能尝遍天下美味。",
+  "STS2_WINE_FOX_ADDONS_RELIC_EMERALD_BADGE.title": "绿宝石徽章",
+  "STS2_WINE_FOX_ADDONS_RELIC_EMERALD_BADGE.description": "在[blue]商人[/blue]处移除卡牌的价格减半！",
+  "STS2_WINE_FOX_ADDONS_RELIC_EMERALD_BADGE.flavor": "村民们用它来记住，谁才是会讲价的客人。",
+  "WINE_FOX_REHEATED_AROMA_RUNE.title": "余味悠长",
+  "WINE_FOX_REHEATED_AROMA_RUNE.description": "战斗中，每当你使用一个[gold]食物[/gold]时，获得[blue]1[/blue]点能量并抽[blue]1[/blue]张牌。每场战斗最多触发[blue]2[/blue]次。",
+  "WINE_FOX_REHEATED_AROMA_RUNE.flavor": "真正的好菜值得再热一次；真正的狐狸，连余味都不肯放过。"
 }
