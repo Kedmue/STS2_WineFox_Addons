@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfvmmcmfpma04"
-path="res://.godot/imported/hextech_ancient_wine_rune.png-20240bfef978aa555a671798ca394cc8.ctex"
+uid="uid://nt5gyihv1d32"
+path="res://.godot/imported/hextech_stoke_rune.png-2eaf985c73adc6537edb95307d52d53e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://STS2_WineFox_Addons/relics/hextech_ancient_wine_rune.png"
-dest_files=["res://.godot/imported/hextech_ancient_wine_rune.png-20240bfef978aa555a671798ca394cc8.ctex"]
+source_file="res://STS2_WineFox_Addons/relics/hextech_stoke_rune.png"
+dest_files=["res://.godot/imported/hextech_stoke_rune.png-2eaf985c73adc6537edb95307d52d53e.ctex"]
 
 [params]
 

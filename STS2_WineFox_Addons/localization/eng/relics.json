@@ -7,5 +7,11 @@
   "STS2_WINE_FOX_ADDONS_RELIC_EMERALD_BADGE.flavor": "The villagers use these to remember who is worth haggling with.",
   "WINE_FOX_REHEATED_AROMA_RUNE.title": "Lingering Aftertaste",
   "WINE_FOX_REHEATED_AROMA_RUNE.description": "During combat, whenever you use a [gold]Food[/gold], gain [blue]1[/blue] Energy and draw [blue]1[/blue] card. Triggers up to [blue]2[/blue] times each combat.",
-  "WINE_FOX_REHEATED_AROMA_RUNE.flavor": "A good dish deserves a second warming. A fox will not even spare the aftertaste."
+  "WINE_FOX_REHEATED_AROMA_RUNE.flavor": "A good dish deserves a second warming. A fox will not even spare the aftertaste.",
+  "WINE_FOX_BASIC_CRAFT_INNATE_RUNE.title": "Opening Craft",
+  "WINE_FOX_BASIC_CRAFT_INNATE_RUNE.description": "Your [gold]Basic Crafting[/gold] gains [gold]Innate[/gold].",
+  "WINE_FOX_BASIC_CRAFT_INNATE_RUNE.flavor": "By the first hammer blow, both the materials and the plan are already in place.",
+  "WINE_FOX_INTERMITTENT_CHANTING_RUNE.title": "Unceasing Chant",
+  "WINE_FOX_INTERMITTENT_CHANTING_RUNE.description": "Your [gold]Intermittent Chanting[/gold] no longer loses [gold]Strength[/gold].",
+  "WINE_FOX_INTERMITTENT_CHANTING_RUNE.flavor": "The chant crosses the gap, and no strength is lost along the way."
 }

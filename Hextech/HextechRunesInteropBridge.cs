@@ -41,5 +41,13 @@ namespace STS2_WineFox_Addons.Hextech
     internal static class HextechRunesApiBridge
     {
         public static bool IsHextechRelic(RelicModel? relic) => false;
+
+        public static void TrackPersistentInnate(CardModel? card)
+        {
+        }
+
+        public static void RestorePersistentInnate(CardModel card)
+        {
+        }
     }
 }

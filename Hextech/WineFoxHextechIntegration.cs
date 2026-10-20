@@ -32,33 +32,36 @@ namespace STS2_WineFox_Addons.Hextech
                     return;
                 }
 
-                var runeType = typeof(WineFoxReheatedAromaRune);
-                HextechRunesInteropBridge.RegisterPlayerRune(
-                    runeType,
-                    rarity: "Silver",
-                    flags: null,
-                    characterPool: null,
-                    characterOrder: 0,
-                    tagKey: "FOOD",
-                    assetModId: Entry.ModId,
-                    isAvailableForPlayer: IsWineFoxPlayer);
+                foreach (var runeType in WineFoxHextechContent.RuneTypes)
+                {
+                    HextechRunesInteropBridge.RegisterPlayerRune(
+                        runeType,
+                        rarity: "Silver",
+                        flags: null,
+                        characterPool: null,
+                        characterOrder: 0,
+                        tagKey: WineFoxHextechContent.GetTagKey(runeType),
+                        assetModId: Entry.ModId,
+                        isAvailableForPlayer: IsWineFoxPlayer);
 
-                // Wine Fox is an external character, so the vanilla character-pool
-                // enum cannot represent it. The interop API maps the rune to the
-                // actual character model and supplies its config/menu labels.
-                HextechRunesInteropBridge.SetPlayerRuneCharacter(runeType, typeof(WineFox));
-                HextechRunesInteropBridge.SetPlayerRunePoolLabel(runeType, "WINE_FOX");
+                    // Wine Fox is an external character, so the vanilla character-pool
+                    // enum cannot represent it. The interop API maps each rune to the
+                    // actual character model and supplies its config/menu labels.
+                    HextechRunesInteropBridge.SetPlayerRuneCharacter(runeType, typeof(WineFox));
+                    HextechRunesInteropBridge.SetPlayerRunePoolLabel(runeType, "WINE_FOX");
+                }
+
                 HextechRunesInteropBridge.RegisterConfigSectionTitle(
                     Entry.ModId,
                     "WINE_FOX_ADDON_SECTION");
 
                 _registered = true;
                 logger.Info(
-                    $"已通过 RitsuLib ModInterop 向海克斯大乱斗注册酒狐专属符文 " +
-                    $"{nameof(WineFoxReheatedAromaRune)}。");
+                    $"已通过 RitsuLib ModInterop 向海克斯大乱斗注册 " +
+                    $"{WineFoxHextechContent.RuneTypes.Count} 枚酒狐专属符文。");
                 WineFoxHextechCollectionHooks.Install(logger);
 
-                VerifyAfterEssentialInitialization(runeType, logger);
+                VerifyAfterEssentialInitialization(logger);
             }
             catch (Exception ex)
             {
@@ -93,14 +96,17 @@ namespace STS2_WineFox_Addons.Hextech
                    player.Character.Id.Entry.Contains("winefox", StringComparison.OrdinalIgnoreCase);
         }
 
-        private static void VerifyAfterEssentialInitialization(Type runeType, Logger logger)
+        private static void VerifyAfterEssentialInitialization(Logger logger)
         {
             RitsuLibFramework.SubscribeLifecycle<EssentialInitializationCompletedEvent>(
                 (_, subscription) =>
                 {
                     subscription.Dispose();
                     if (_registered)
-                        VerifyRegisteredModel(runeType, logger);
+                    {
+                        foreach (var runeType in WineFoxHextechContent.RuneTypes)
+                            VerifyRegisteredModel(runeType, logger);
+                    }
                 },
                 replayCurrentState: true);
         }

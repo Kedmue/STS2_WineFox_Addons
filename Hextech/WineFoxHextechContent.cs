@@ -12,11 +12,25 @@ namespace STS2_WineFox_Addons.Hextech
         public static readonly IReadOnlyList<Type> RuneTypes =
         [
             typeof(WineFoxReheatedAromaRune),
+            typeof(WineFoxBasicCraftInnateRune),
+            typeof(WineFoxIntermittentChantingRune),
         ];
 
         public static bool IsWineFoxRune(RelicModel? relic)
         {
             return relic != null && RuneTypes.Contains(relic.GetType());
+        }
+
+        public static string GetTagKey(Type runeType)
+        {
+            if (runeType == typeof(WineFoxReheatedAromaRune))
+                return "FOOD";
+            if (runeType == typeof(WineFoxBasicCraftInnateRune))
+                return "RESOURCE";
+            if (runeType == typeof(WineFoxIntermittentChantingRune))
+                return "OUTPUT";
+
+            return "COMPREHENSIVE";
         }
     }
 }

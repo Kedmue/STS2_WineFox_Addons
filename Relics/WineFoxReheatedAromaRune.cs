@@ -31,9 +31,9 @@ namespace STS2_WineFox_Addons.Hextech
         public override int DisplayAmount => Math.Max(0, MaxTriggersPerCombat - TriggersThisCombat);
 
         public override RelicAssetProfile AssetProfile => new(
-            "res://STS2_WineFox_Addons/relics/hextech_ancient_wine_rune.png",
-            "res://STS2_WineFox_Addons/relics/hextech_ancient_wine_rune.png",
-            "res://STS2_WineFox_Addons/relics/hextech_ancient_wine_rune.png");
+            "res://STS2_WineFox_Addons/relics/hextech_stoke_rune.png",
+            "res://STS2_WineFox_Addons/relics/hextech_stoke_rune.png",
+            "res://STS2_WineFox_Addons/relics/hextech_stoke_rune.png");
 
         [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
         public int TriggersThisCombat
