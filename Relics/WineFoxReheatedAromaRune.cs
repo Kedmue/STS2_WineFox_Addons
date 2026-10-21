@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using STS2_WineFox.Potions;
@@ -34,6 +36,13 @@ namespace STS2_WineFox_Addons.Hextech
             "res://STS2_WineFox_Addons/relics/hextech_stoke_rune.png",
             "res://STS2_WineFox_Addons/relics/hextech_stoke_rune.png",
             "res://STS2_WineFox_Addons/relics/hextech_stoke_rune.png");
+
+        protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
+        [
+            new HoverTip(
+                new LocString("gameplay_ui", "WINE_FOX_RUNE_FOOD.title"),
+                new LocString("gameplay_ui", "WINE_FOX_RUNE_FOOD.description")),
+        ];
 
         [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
         public int TriggersThisCombat

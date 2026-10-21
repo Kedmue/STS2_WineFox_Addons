@@ -1,3 +1,5 @@
 {
-  "STS2_WINE_FOX_ADDONS_POTION_POPUP.eat": "食用"
+  "STS2_WINE_FOX_ADDONS_POTION_POPUP.eat": "食用",
+  "WINE_FOX_RUNE_FOOD.title": "食物",
+  "WINE_FOX_RUNE_FOOD.description": "酒狐的食物以药水形式存在；使用食物即使用对应的药水。"
 }

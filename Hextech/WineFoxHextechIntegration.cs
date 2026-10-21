@@ -32,11 +32,15 @@ namespace STS2_WineFox_Addons.Hextech
                     return;
                 }
 
+                WineFoxMechanicalSawPatch.Install(logger);
+                WineFoxNetheriteChestplatePatch.Install(logger);
+                WineFoxRuneSelectionFooterPatch.Install(logger);
+
                 foreach (var runeType in WineFoxHextechContent.RuneTypes)
                 {
                     HextechRunesInteropBridge.RegisterPlayerRune(
                         runeType,
-                        rarity: "Silver",
+                        rarity: WineFoxHextechContent.GetRarity(runeType),
                         flags: null,
                         characterPool: null,
                         characterOrder: 0,
@@ -124,6 +128,7 @@ namespace STS2_WineFox_Addons.Hextech
                 }
 
                 var iconPath = relic.IconPath;
+                var hoverTipCount = relic.HoverTips.Count();
                 var poolLabelExists = LocString.Exists("relic_collection", "HEXTECH_POOL.WINE_FOX");
                 var tagLabelExists = LocString.Exists("relic_collection", "HEXTECH_TAG.FOOD");
                 var sourceLabelExists = LocString.Exists("relic_collection", "WINE_FOX_ADDON_SECTION");
@@ -131,6 +136,7 @@ namespace STS2_WineFox_Addons.Hextech
                     $"海克斯符文自检通过：id={id}, title={relic.Title.GetFormattedText()}, " +
                     $"hextech={HextechRunesApiBridge.IsHextechRelic(relic)}, " +
                     $"icon={iconPath}, iconExists={ResourceLoader.Exists(iconPath)}, " +
+                    $"hoverTips={hoverTipCount}, " +
                     $"labels={poolLabelExists}/{tagLabelExists}/{sourceLabelExists}。");
             }
             catch (Exception ex)

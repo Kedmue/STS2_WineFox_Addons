@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using STS2_WineFox.Cards.Basic;
 using STS2RitsuLib.Scaffolding.Content;
@@ -15,13 +16,23 @@ namespace STS2_WineFox_Addons.Hextech
     {
         public override RelicRarity Rarity => RelicRarity.Starter;
 
+        public override bool HasUponPickupEffect => true;
+
         public override RelicAssetProfile AssetProfile => new(
             "res://STS2_WineFox_Addons/relics/hextech_startup_routine_rune.png",
             "res://STS2_WineFox_Addons/relics/hextech_startup_routine_rune.png",
             "res://STS2_WineFox_Addons/relics/hextech_startup_routine_rune.png");
 
-        public override Task AfterObtained()
+        protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
+        [
+            HoverTipFactory.FromCard<BasicCraft>(false),
+            HoverTipFactory.FromKeyword(CardKeyword.Innate),
+        ];
+
+        public override async Task AfterObtained()
         {
+            await WineFoxRuneCardGrant.Grant<BasicCraft>(this);
+
             var applied = false;
             foreach (var card in Owner.Deck.Cards)
             {
@@ -31,8 +42,6 @@ namespace STS2_WineFox_Addons.Hextech
 
             if (applied)
                 Flash();
-
-            return Task.CompletedTask;
         }
 
         public override Task AfterCardEnteredCombat(CardModel card)

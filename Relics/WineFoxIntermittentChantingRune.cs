@@ -2,6 +2,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Rooms;
@@ -20,10 +21,23 @@ namespace STS2_WineFox_Addons.Hextech
 
         public override RelicRarity Rarity => RelicRarity.Starter;
 
+        public override bool HasUponPickupEffect => true;
+
         public override RelicAssetProfile AssetProfile => new(
             "res://STS2_WineFox_Addons/relics/hextech_big_strength_rune.png",
             "res://STS2_WineFox_Addons/relics/hextech_big_strength_rune.png",
             "res://STS2_WineFox_Addons/relics/hextech_big_strength_rune.png");
+
+        protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
+        [
+            HoverTipFactory.FromCard<IntermittentChanting>(false),
+            HoverTipFactory.FromPower<StrengthPower>(),
+        ];
+
+        public override Task AfterObtained()
+        {
+            return WineFoxRuneCardGrant.Grant<IntermittentChanting>(this);
+        }
 
         public override Task BeforeCardPlayed(CardPlay cardPlay)
         {

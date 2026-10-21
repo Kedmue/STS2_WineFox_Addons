@@ -275,12 +275,17 @@ namespace STS2_WineFox_Addons.Hextech
         private static IReadOnlyList<RelicModel> BuildVisibleRunes()
         {
             var result = new List<RelicModel>();
-            foreach (var type in WineFoxHextechContent.RuneTypes)
+            var orderedTypes = WineFoxHextechContent.RuneTypes
+                .Select((type, index) => (Type: type, Index: index))
+                .OrderBy(entry => WineFoxHextechContent.GetRaritySortOrder(entry.Type))
+                .ThenBy(entry => entry.Index);
+
+            foreach (var entry in orderedTypes)
             {
-                if (!IsVisibleInCollection(type))
+                if (!IsVisibleInCollection(entry.Type))
                     continue;
 
-                var relic = ModelDb.GetByIdOrNull<RelicModel>(ModelDb.GetId(type));
+                var relic = ModelDb.GetByIdOrNull<RelicModel>(ModelDb.GetId(entry.Type));
                 if (relic != null)
                     result.Add(relic);
             }
