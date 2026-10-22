@@ -12,7 +12,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Adds a fresh All-Item Warehouse to hand at the start of each turn.
+    /// 在每个回合开始时，将 1 张新的“全物品仓库”加入手牌。
     /// </summary>
     public sealed class WineFoxMyriadDepotRune : ModRelicTemplate
     {

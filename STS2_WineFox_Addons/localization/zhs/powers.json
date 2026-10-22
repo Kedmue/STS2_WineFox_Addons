@@ -10,5 +10,7 @@
   "STS2_WINE_FOX_ADDONS_POWER_NEXT_TURN_TEMPORARY_STRENGTH_POWER.smartDescription": "在你的下个回合开始时获得[blue]{Amount}[/blue]点[gold]力量[/gold]，并在该回合结束时失去。",
   "STS2_WINE_FOX_ADDONS_POWER_NOURISHMENT_POWER.title": "滋养",
   "STS2_WINE_FOX_ADDONS_POWER_NOURISHMENT_POWER.description": "[gold]滋养[/gold]会在你的回合结束时回复[blue]1[/blue]点生命。当你受到未被格挡的伤害时，免疫该伤害并减少[blue]1[/blue]层。",
-  "STS2_WINE_FOX_ADDONS_POWER_NOURISHMENT_POWER.smartDescription": "在你的回合结束时回复[blue]{Amount}[/blue]点生命。当你受到未被格挡的伤害时，免疫该伤害并减少[blue]1[/blue]层[gold]滋养[/gold]。"
+  "STS2_WINE_FOX_ADDONS_POWER_NOURISHMENT_POWER.smartDescription": "在你的回合结束时回复[blue]{Amount}[/blue]点生命。当你受到未被格挡的伤害时，免疫该伤害并减少[blue]1[/blue]层[gold]滋养[/gold]。",
+  "STS2_WINE_FOX_ADDONS_POWER_WINE_FOX_MATERIAL_RUNE_LISTENER_POWER.title": "材料符文监听",
+  "STS2_WINE_FOX_ADDONS_POWER_WINE_FOX_MATERIAL_RUNE_LISTENER_POWER.description": "隐藏的机制能力，用于处理材料符文效果。"
 }

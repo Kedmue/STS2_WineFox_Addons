@@ -11,8 +11,8 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Replaces Mechanical Saw's single-Stress bonus with consuming every
-    /// Stress stack for 7 additional damage each.
+    /// 将动力锯原本消耗 1 层应力获得加成的效果，
+    /// 改为消耗全部应力，每消耗 1 层额外造成 7 点伤害。
     /// </summary>
     public sealed class WineFoxMechanicalSawRune : ModRelicTemplate
     {

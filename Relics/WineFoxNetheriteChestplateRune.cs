@@ -14,8 +14,8 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Upgrades Netherite Chestplate by tripling the end-of-turn Block it
-    /// gains from the owner's Plating.
+    /// 升级“下界合金甲”：将其在回合结束时由拥有者覆甲获得的格挡
+    /// 提升至三倍。
     /// </summary>
     public sealed class WineFoxNetheriteChestplateRune : ModRelicTemplate
     {

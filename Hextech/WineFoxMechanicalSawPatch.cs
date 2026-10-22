@@ -7,8 +7,8 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Replaces Mechanical Saw's OnPlay only when the owning player has the
-    /// corresponding upgrade rune.
+    /// 仅当卡牌拥有者持有“升级：动力锯”符文时，
+    /// 替换动力锯原本的打出逻辑。
     /// </summary>
     internal static class WineFoxMechanicalSawPatch
     {

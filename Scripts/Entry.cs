@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Modding;
 using STS2RitsuLib;
 using STS2RitsuLib.Interop;
 using STS2RitsuLib.Patching.Core;
+using STS2_WineFox_Addons.Hextech;
 using STS2_WineFox_Addons.Patches;
 using STS2_WineFox_Addons.Settings;
 
@@ -34,6 +35,10 @@ namespace STS2_WineFox_Addons.Scripts
             // harmony可用，但是最好用ritsu的封装patch，见补丁系统一章
             // var harmony = new Harmony("com.example.testmod");
             // harmony.PatchAll();
+            // 必须在模组类型发现最终确定存档属性名称表之前，
+            // 注册卡牌持久化状态。
+            WineFoxPersistentCardState.Initialize();
+
             var assembly = Assembly.GetExecutingAssembly();
             
             ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);

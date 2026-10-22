@@ -8,7 +8,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Makes every Wireless Terminal owned by the player cost 0 Energy.
+    /// 使玩家拥有的所有“无线合成终端”费用变为 0。
     /// </summary>
     public sealed class WineFoxWirelessTerminalRune : ModRelicTemplate
     {

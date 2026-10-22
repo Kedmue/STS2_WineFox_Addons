@@ -3,14 +3,15 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Rooms;
 using STS2_WineFox.Cards.Basic;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Gives every Basic Craft owned by the player the Innate keyword and keeps
-    /// that keyword through deck copies, combat clones, saves, and upgrades.
+    /// 使玩家拥有的所有“基础合成”获得“固有”，并在牌组复制、战斗克隆、
+    /// 存档读入和卡牌升级后继续保持该关键词。
     /// </summary>
     public sealed class WineFoxBasicCraftInnateRune : ModRelicTemplate
     {
@@ -31,7 +32,9 @@ namespace STS2_WineFox_Addons.Hextech
 
         public override async Task AfterObtained()
         {
-            await WineFoxRuneCardGrant.Grant<BasicCraft>(this);
+            await WineFoxRuneCardGrant.Grant<BasicCraft>(
+                this,
+                card => TryApplyInnate(card));
 
             var applied = false;
             foreach (var card in Owner.Deck.Cards)
@@ -47,8 +50,20 @@ namespace STS2_WineFox_Addons.Hextech
         public override Task AfterCardEnteredCombat(CardModel card)
         {
             if (card.Owner == Owner && card is BasicCraft)
-                HextechRunesApiBridge.RestorePersistentInnate(card);
+                RestoreInnate(card);
 
+            return Task.CompletedTask;
+        }
+
+        public override Task AfterRoomEntered(AbstractRoom room)
+        {
+            RestoreDeckInnate();
+            return Task.CompletedTask;
+        }
+
+        public override Task BeforeCombatStart()
+        {
+            RestoreDeckInnate();
             return Task.CompletedTask;
         }
 
@@ -65,14 +80,38 @@ namespace STS2_WineFox_Addons.Hextech
 
         private bool TryApplyInnate(CardModel? card)
         {
-            if (card == null || card.Owner != Owner || card is not BasicCraft)
+            if (card is not BasicCraft basicCraft || basicCraft.Owner != Owner)
                 return false;
 
-            HextechRunesApiBridge.TrackPersistentInnate(card);
-            if (!card.Keywords.Contains(CardKeyword.Innate))
-                CardCmd.ApplyKeyword(card, [CardKeyword.Innate]);
+            WineFoxPersistentCardState.MarkBasicCraftInnate(basicCraft);
+            if (!basicCraft.Keywords.Contains(CardKeyword.Innate))
+                CardCmd.ApplyKeyword(basicCraft, [CardKeyword.Innate]);
 
             return true;
+        }
+
+        private void RestoreInnate(CardModel card)
+        {
+            if (card is not BasicCraft basicCraft)
+                return;
+
+            if (!WineFoxPersistentCardState.HasBasicCraftInnate(basicCraft))
+            {
+                // 迁移仍依赖海克斯旧本地标记的读档卡牌。
+                if (!basicCraft.Keywords.Contains(CardKeyword.Innate))
+                    return;
+
+                WineFoxPersistentCardState.MarkBasicCraftInnate(basicCraft);
+            }
+
+            if (!card.Keywords.Contains(CardKeyword.Innate))
+                CardCmd.ApplyKeyword(card, [CardKeyword.Innate]);
+        }
+
+        private void RestoreDeckInnate()
+        {
+            foreach (var card in Owner.Deck.Cards)
+                RestoreInnate(card);
         }
     }
 }

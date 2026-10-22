@@ -9,8 +9,8 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Marks the exact end-of-turn Plating block from Netherite Chestplate so
-    /// the rune can multiply only that block gain.
+    /// 标记下界合金甲在回合结束时由覆甲产生的准确格挡来源，
+    /// 使对应符文只对该次格挡获得量进行倍率放大。
     /// </summary>
     internal static class WineFoxNetheriteChestplatePatch
     {

@@ -7,9 +7,9 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Adds the built-in upgrade-rune pickup footer to Wine Fox runes without
-    /// referencing the Hextech assembly. ARAM's footer interface is internal,
-    /// so this optional Harmony patch mirrors its existing presentation.
+    /// 为酒狐升级符文添加与海克斯本体一致的“获得时附赠卡牌”页脚，
+    /// 同时避免在编译期引用海克斯程序集。由于海克斯大乱斗的页脚接口是
+    /// <c>internal</c>，这里使用可选 Harmony 补丁复现其现有显示效果。
     /// </summary>
     internal static class WineFoxRuneSelectionFooterPatch
     {
@@ -110,7 +110,7 @@ namespace STS2_WineFox_Addons.Hextech
                 }
                 catch (Exception)
                 {
-                    // Ignore partially loaded assemblies and keep looking.
+                    // 忽略尚未完整加载的程序集，并继续查找。
                 }
             }
 

@@ -10,8 +10,8 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Optional ARAM: Mayhem integration. This class deliberately has no
-    /// compile-time reference to the HextechRunes assembly.
+    /// 海克斯大乱斗的可选联动入口。本类刻意不保留对
+    /// <c>HextechRunes</c> 程序集的编译期引用。
     /// </summary>
     internal static class WineFoxHextechIntegration
     {
@@ -34,7 +34,9 @@ namespace STS2_WineFox_Addons.Hextech
 
                 WineFoxMechanicalSawPatch.Install(logger);
                 WineFoxNetheriteChestplatePatch.Install(logger);
+                WineFoxStoneArmorRunePatch.Install(logger);
                 WineFoxRuneSelectionFooterPatch.Install(logger);
+                WineFoxLegacyInnateMarkerPatch.Install(logger);
 
                 foreach (var runeType in WineFoxHextechContent.RuneTypes)
                 {
@@ -48,9 +50,9 @@ namespace STS2_WineFox_Addons.Hextech
                         assetModId: Entry.ModId,
                         isAvailableForPlayer: IsWineFoxPlayer);
 
-                    // Wine Fox is an external character, so the vanilla character-pool
-                    // enum cannot represent it. The interop API maps each rune to the
-                    // actual character model and supplies its config/menu labels.
+                    // 酒狐是外部角色，原版的角色池枚举无法表示它。
+                    // 因此通过互操作接口把每枚符文映射到实际角色模型，
+                    // 并提供配置界面与菜单所需的标签。
                     HextechRunesInteropBridge.SetPlayerRuneCharacter(runeType, typeof(WineFox));
                     HextechRunesInteropBridge.SetPlayerRunePoolLabel(runeType, "WINE_FOX");
                 }
@@ -87,7 +89,7 @@ namespace STS2_WineFox_Addons.Hextech
                 }
                 catch (Exception)
                 {
-                    // A partially loaded assembly is equivalent to the optional target being unavailable.
+                    // 程序集尚未完整加载时，按可选目标不可用处理。
                 }
             }
 

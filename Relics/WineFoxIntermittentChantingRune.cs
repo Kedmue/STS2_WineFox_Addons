@@ -12,8 +12,8 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Cancels Intermittent Chanting's built-in 2 Strength loss, leaving the
-    /// Tracking power and block gain intact.
+    /// 取消“间隙咏唱”原本失去 2 点力量的效果，
+    /// 同时保留其咏唱追踪能力和格挡获得效果。
     /// </summary>
     public sealed class WineFoxIntermittentChantingRune : ModRelicTemplate
     {

@@ -10,5 +10,7 @@
   "STS2_WINE_FOX_ADDONS_POWER_NEXT_TURN_TEMPORARY_STRENGTH_POWER.smartDescription": "At the start of your next turn, gain [blue]{Amount}[/blue] [gold]Strength[/gold] until the end of that turn.",
   "STS2_WINE_FOX_ADDONS_POWER_NOURISHMENT_POWER.title": "Nourishment",
   "STS2_WINE_FOX_ADDONS_POWER_NOURISHMENT_POWER.description": "[gold]Nourishment[/gold] heals [blue]1[/blue] HP per stack at the end of your turn. When you take unblocked damage, negate that damage and lose [blue]1[/blue] stack.",
-  "STS2_WINE_FOX_ADDONS_POWER_NOURISHMENT_POWER.smartDescription": "At the end of your turn, heal [blue]{Amount}[/blue] HP. When you take unblocked damage, negate that damage and lose [blue]1[/blue] stack of [gold]Nourishment[/gold]."
+  "STS2_WINE_FOX_ADDONS_POWER_NOURISHMENT_POWER.smartDescription": "At the end of your turn, heal [blue]{Amount}[/blue] HP. When you take unblocked damage, negate that damage and lose [blue]1[/blue] stack of [gold]Nourishment[/gold].",
+  "STS2_WINE_FOX_ADDONS_POWER_WINE_FOX_MATERIAL_RUNE_LISTENER_POWER.title": "Material Rune Listener",
+  "STS2_WINE_FOX_ADDONS_POWER_WINE_FOX_MATERIAL_RUNE_LISTENER_POWER.description": "Hidden mechanical power used to resolve material rune effects."
 }

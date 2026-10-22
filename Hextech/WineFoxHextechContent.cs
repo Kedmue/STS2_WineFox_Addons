@@ -3,11 +3,10 @@ using MegaCrit.Sts2.Core.Models;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Central registry of Wine Fox runes exposed through the optional ARAM:
-    /// Mayhem integration. Add future rune types here so collection filtering
-    /// and character-specific categorization remain consistent.
-    /// Every rune must override <c>AdditionalHoverTips</c> for the cards, keywords,
-    /// and powers named in its description, following the built-in runes.
+    /// 海克斯大乱斗可选联动所暴露的酒狐符文中央注册表。
+    /// 后续新增符文应登记于此，以保持百科筛选与酒狐专属分类一致。
+    /// 参照海克斯本体符文，每枚符文都应为描述中提到的卡牌、关键词和能力
+    /// 重写 <c>AdditionalHoverTips</c> 来提供悬停提示。
     /// </summary>
     internal static class WineFoxHextechContent
     {
@@ -17,10 +16,14 @@ namespace STS2_WineFox_Addons.Hextech
             typeof(WineFoxBasicCraftInnateRune),
             typeof(WineFoxIntermittentChantingRune),
             typeof(WineFoxMechanicalSawRune),
+            typeof(WineFoxStoneArmorRune),
+            typeof(WineFoxMaterialSparkRune),
             typeof(WineFoxMaterialBlastRune),
             typeof(WineFoxNetheriteChestplateRune),
+            typeof(WineFoxMaterialRefundRune),
             typeof(WineFoxMyriadDepotRune),
             typeof(WineFoxWirelessTerminalRune),
+            typeof(WineFoxTravelingTroveRune),
         ];
 
         public static bool IsWineFoxRune(RelicModel? relic)
@@ -31,10 +34,12 @@ namespace STS2_WineFox_Addons.Hextech
         public static string GetRarity(Type runeType)
         {
             if (runeType == typeof(WineFoxMyriadDepotRune) ||
-                runeType == typeof(WineFoxWirelessTerminalRune))
+                runeType == typeof(WineFoxWirelessTerminalRune) ||
+                runeType == typeof(WineFoxTravelingTroveRune))
                 return "Prismatic";
             if (runeType == typeof(WineFoxMaterialBlastRune) ||
-                runeType == typeof(WineFoxNetheriteChestplateRune))
+                runeType == typeof(WineFoxNetheriteChestplateRune) ||
+                runeType == typeof(WineFoxMaterialRefundRune))
                 return "Gold";
 
             return "Silver";
@@ -61,14 +66,22 @@ namespace STS2_WineFox_Addons.Hextech
                 return "OUTPUT";
             if (runeType == typeof(WineFoxMechanicalSawRune))
                 return "OUTPUT";
+            if (runeType == typeof(WineFoxStoneArmorRune))
+                return "SURVIVAL";
+            if (runeType == typeof(WineFoxMaterialSparkRune))
+                return "OUTPUT";
             if (runeType == typeof(WineFoxMyriadDepotRune))
                 return "DRAW";
             if (runeType == typeof(WineFoxMaterialBlastRune))
                 return "OUTPUT";
             if (runeType == typeof(WineFoxNetheriteChestplateRune))
                 return "SURVIVAL";
+            if (runeType == typeof(WineFoxMaterialRefundRune))
+                return "RESOURCE";
             if (runeType == typeof(WineFoxWirelessTerminalRune))
                 return "RESOURCE";
+            if (runeType == typeof(WineFoxTravelingTroveRune))
+                return "DRAW";
 
             return "COMPREHENSIVE";
         }

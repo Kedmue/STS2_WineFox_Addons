@@ -13,8 +13,8 @@ using STS2_WineFox.Cards.Uncommon;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Mirrors the built-in card-upgrade rune pickup: grant one matching card
-    /// to hand during combat, otherwise add it to the deck with a preview.
+    /// 复现海克斯本体的卡牌升级符文获取逻辑：战斗中获得的对应卡牌
+    /// 加入手牌，战斗外则加入牌组并显示加入预览。
     /// </summary>
     internal static class WineFoxRuneCardGrant
     {
@@ -59,7 +59,10 @@ namespace STS2_WineFox_Addons.Hextech
             }
         }
 
-        public static async Task Grant<TCard>(RelicModel rune) where TCard : CardModel
+        public static async Task Grant<TCard>(
+            RelicModel rune,
+            Action<CardModel>? configureCard = null)
+            where TCard : CardModel
         {
             var owner = rune.Owner;
             var combatState = owner.Creature.CombatState;
@@ -70,6 +73,7 @@ namespace STS2_WineFox_Addons.Hextech
                 !CombatManager.Instance.IsOverOrEnding)
             {
                 var combatCard = combatState.CreateCard<TCard>(owner);
+                configureCard?.Invoke(combatCard);
                 await CardPileCmd.AddGeneratedCardToCombat(
                     combatCard,
                     PileType.Hand,
@@ -80,6 +84,7 @@ namespace STS2_WineFox_Addons.Hextech
             }
 
             var card = owner.RunState.CreateCard<TCard>(owner);
+            configureCard?.Invoke(card);
             var result = await CardPileCmd.Add(
                 card,
                 PileType.Deck,

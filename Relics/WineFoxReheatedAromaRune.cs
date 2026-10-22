@@ -13,10 +13,10 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Reference Wine Fox rune for the optional ARAM: Mayhem integration.
+    /// 海克斯大乱斗可选联动中的酒狐参考符文。
     ///
-    /// Food and dishes both derive from <see cref="SellableToMerchantPotionModel" />,
-    /// which gives the rune one stable way to identify every Wine Fox food item.
+    /// 食物与菜肴都继承 <see cref="SellableToMerchantPotionModel" />，
+    /// 因此符文可以用同一种稳定方式识别所有酒狐食物。
     /// </summary>
     public sealed class WineFoxReheatedAromaRune : ModRelicTemplate
     {
@@ -24,8 +24,8 @@ namespace STS2_WineFox_Addons.Hextech
 
         private int _triggersThisCombat;
 
-        // ARAM treats every external player rune as a starter-rarity relic internally;
-        // registration metadata supplies the Silver/Gold/Prismatic presentation.
+        // 海克斯大乱斗在内部会把所有外部玩家符文视为初始稀有度遗物；
+        // 白银、黄金、棱彩等实际稀有度由注册元数据提供。
         public override RelicRarity Rarity => RelicRarity.Starter;
 
         public override bool ShowCounter => true;

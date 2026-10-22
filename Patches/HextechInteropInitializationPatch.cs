@@ -6,9 +6,9 @@ using STS2_WineFox_Addons.Scripts;
 namespace STS2_WineFox_Addons.Patches
 {
     /// <summary>
-    /// RitsuLib binds [ModInterop] stubs in a prefix of LocManager.Initialize.
-    /// The postfix is therefore the first safe point to call optional integrations
-    /// by their strong proxy, before model/content registration is frozen.
+    /// RitsuLib 会在 <c>LocManager.Initialize</c> 的前置补丁中绑定
+    /// <c>[ModInterop]</c> 代理桩。因此这里使用后置补丁，在模型与内容注册
+    /// 冻结之前，通过强类型代理调用可选扩展集成。
     /// </summary>
     public sealed class HextechInteropInitializationPatch : IPatchMethod
     {

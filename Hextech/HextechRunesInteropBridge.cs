@@ -5,9 +5,9 @@ using STS2RitsuLib.Interop;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Strongly typed, optional bridge to ARAM: Mayhem.
-    /// RitsuLib rewrites these fallback members after type discovery when the
-    /// target mod is loaded. Without the target mod they remain safe no-ops.
+    /// 面向海克斯大乱斗的强类型可选互操作桥接层。
+    /// 目标模组加载后，RitsuLib 会在类型发现阶段重写这些占位成员；
+    /// 未安装目标模组时，它们会保持为安全的空操作。
     /// </summary>
     [ModInterop("HextechRunes", "HextechRunes.HextechRunesInterop")]
     internal static class HextechRunesInteropBridge
@@ -41,13 +41,5 @@ namespace STS2_WineFox_Addons.Hextech
     internal static class HextechRunesApiBridge
     {
         public static bool IsHextechRelic(RelicModel? relic) => false;
-
-        public static void TrackPersistentInnate(CardModel? card)
-        {
-        }
-
-        public static void RestorePersistentInnate(CardModel card)
-        {
-        }
     }
 }

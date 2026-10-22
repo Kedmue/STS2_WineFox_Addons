@@ -12,8 +12,8 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// At the end of the owner's turn, each held Material deals 1 damage to
-    /// every hittable enemy.
+    /// 在拥有者回合结束时，每持有 1 份材料，
+    /// 就对所有可被攻击的敌人造成 1 点伤害。
     /// </summary>
     public sealed class WineFoxMaterialBlastRune : ModRelicTemplate
     {

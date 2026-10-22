@@ -12,9 +12,8 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// Mirrors the Watcher expansion's relic-collection integration:
-    /// remove Wine Fox runes from the generic Hextech list, then add a
-    /// dedicated "Wine Fox Hextech" subcategory under Hextech runes.
+    /// 参照观者扩展的遗物百科集成方式：先从通用海克斯列表中移除
+    /// 酒狐符文，再在海克斯符文分类下添加独立的“酒狐海克斯”子分类。
     /// </summary>
     internal static class WineFoxHextechCollectionHooks
     {
@@ -146,7 +145,7 @@ namespace STS2_WineFox_Addons.Hextech
                 }
                 catch (Exception)
                 {
-                    // Ignore partially loaded optional assemblies.
+                    // 忽略尚未完整加载的可选程序集。
                 }
             }
 

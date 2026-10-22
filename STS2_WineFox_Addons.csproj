@@ -40,6 +40,8 @@
     <ItemGroup>
         <!-- 排除 Decompiled 文件夹下所有 .cs 文件，不参与编译 -->
         <Compile Remove="Decompiled\**\*.cs" />
+        <!-- tmp 下包含独立的发布工具及其 obj 输出，不应并入 Mod 程序集。 -->
+        <Compile Remove="tmp\**\*.cs" />
         <!-- 将这些文件作为 None 项包含，使其在 IDE 中可见但不构建 -->
         <None Include="Decompiled\**\*" />
     </ItemGroup>
