@@ -5,7 +5,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// 每当拥有者获得材料时，对随机敌人造成 3 点伤害。
+    /// 每当拥有者获得材料时，对随机敌人造成 5 点伤害。
     /// </summary>
     public sealed class WineFoxMaterialSparkRune : WineFoxMaterialRuneBase
     {

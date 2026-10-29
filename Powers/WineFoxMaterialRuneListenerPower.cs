@@ -18,7 +18,7 @@ namespace STS2_WineFox_Addons.Powers
     [RegisterPower]
     public sealed class WineFoxMaterialRuneListenerPower : MaterialReactivePower
     {
-        private const decimal MaterialSparkDamage = 3m;
+        private const decimal MaterialSparkDamage = 5m;
 
         public override PowerType Type => PowerType.Buff;
         public override PowerStackType StackType => PowerStackType.None;

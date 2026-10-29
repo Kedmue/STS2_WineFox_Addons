@@ -18,12 +18,17 @@ namespace STS2_WineFox_Addons.Hextech
             typeof(WineFoxMechanicalSawRune),
             typeof(WineFoxStoneArmorRune),
             typeof(WineFoxMaterialSparkRune),
+            typeof(WineFoxSawdustWardRune),
             typeof(WineFoxMaterialBlastRune),
             typeof(WineFoxNetheriteChestplateRune),
             typeof(WineFoxMaterialRefundRune),
+            typeof(WineFoxSteamPreludeRune),
+            typeof(WineFoxAssemblyLineRune),
             typeof(WineFoxMyriadDepotRune),
             typeof(WineFoxWirelessTerminalRune),
             typeof(WineFoxTravelingTroveRune),
+            typeof(WineFoxBackpackCollectorRune),
+            typeof(WineFoxRichVeinRune),
         ];
 
         public static bool IsWineFoxRune(RelicModel? relic)
@@ -35,11 +40,15 @@ namespace STS2_WineFox_Addons.Hextech
         {
             if (runeType == typeof(WineFoxMyriadDepotRune) ||
                 runeType == typeof(WineFoxWirelessTerminalRune) ||
-                runeType == typeof(WineFoxTravelingTroveRune))
+                runeType == typeof(WineFoxTravelingTroveRune) ||
+                runeType == typeof(WineFoxBackpackCollectorRune) ||
+                runeType == typeof(WineFoxRichVeinRune))
                 return "Prismatic";
             if (runeType == typeof(WineFoxMaterialBlastRune) ||
                 runeType == typeof(WineFoxNetheriteChestplateRune) ||
-                runeType == typeof(WineFoxMaterialRefundRune))
+                runeType == typeof(WineFoxMaterialRefundRune) ||
+                runeType == typeof(WineFoxSteamPreludeRune) ||
+                runeType == typeof(WineFoxAssemblyLineRune))
                 return "Gold";
 
             return "Silver";
@@ -70,6 +79,8 @@ namespace STS2_WineFox_Addons.Hextech
                 return "SURVIVAL";
             if (runeType == typeof(WineFoxMaterialSparkRune))
                 return "OUTPUT";
+            if (runeType == typeof(WineFoxSawdustWardRune))
+                return "SURVIVAL";
             if (runeType == typeof(WineFoxMyriadDepotRune))
                 return "DRAW";
             if (runeType == typeof(WineFoxMaterialBlastRune))
@@ -78,10 +89,18 @@ namespace STS2_WineFox_Addons.Hextech
                 return "SURVIVAL";
             if (runeType == typeof(WineFoxMaterialRefundRune))
                 return "RESOURCE";
+            if (runeType == typeof(WineFoxSteamPreludeRune))
+                return "RESOURCE";
+            if (runeType == typeof(WineFoxAssemblyLineRune))
+                return "DRAW";
             if (runeType == typeof(WineFoxWirelessTerminalRune))
                 return "RESOURCE";
             if (runeType == typeof(WineFoxTravelingTroveRune))
                 return "DRAW";
+            if (runeType == typeof(WineFoxBackpackCollectorRune))
+                return "COMPREHENSIVE";
+            if (runeType == typeof(WineFoxRichVeinRune))
+                return "RESOURCE";
 
             return "COMPREHENSIVE";
         }

@@ -25,8 +25,13 @@
             <Private>false</Private>
         </Reference>
         
-        <Reference Include="STS2_WineFox">
-            <HintPath>$(Sts2Dir)\mods\STS2_WineFox\STS2_WineFox.dll</HintPath>
+        <!-- 优先使用本地安装的酒狐；若酒狐由创意工坊加载，则从工坊目录回退查找。 -->
+        <Reference Include="$(Sts2Dir)\mods\STS2_WineFox\STS2_WineFox.dll"
+                   Condition="Exists('$(Sts2Dir)\mods\STS2_WineFox\STS2_WineFox.dll')">
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="$(Sts2Dir)\..\..\workshop\content\2868840\*\STS2_WineFox.dll"
+                   Condition="!Exists('$(Sts2Dir)\mods\STS2_WineFox\STS2_WineFox.dll')">
             <Private>false</Private>
         </Reference>
 

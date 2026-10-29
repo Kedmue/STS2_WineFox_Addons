@@ -9,12 +9,14 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Saves;
 using STS2_WineFox.Character;
+using STS2_WineFox.Cards.Token.SophisticatedBackpack;
 using STS2RitsuLib.Scaffolding.Content;
 
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// 在每个回合开始时，将 1 张随机酒狐 Token 牌加入手牌。
+    /// 在每个回合开始时，将 1 张随机酒狐合成 Token 牌加入手牌。
+    /// 精妙背包升级牌不属于合成产物池的随机范围。
     /// </summary>
     public sealed class WineFoxTravelingTroveRune : ModRelicTemplate
     {
@@ -47,11 +49,12 @@ namespace STS2_WineFox_Addons.Hextech
                 return;
             }
 
-            var candidates = ModelDb.CardPool<WineFoxTokenCardPool>()
+            var candidates = ModelDb.CardPool<WineFoxCraftingCardPool>()
                 .AllCards
                 .Where(card =>
                     card.Rarity == CardRarity.Token &&
-                    card.CanBeGeneratedInCombat)
+                    card.CanBeGeneratedInCombat &&
+                    !IsBackpackUpgrade(card))
                 .ToList();
             if (candidates.Count == 0)
                 return;
@@ -70,6 +73,20 @@ namespace STS2_WineFox_Addons.Hextech
                 PileType.Hand,
                 Owner,
                 CardPilePosition.Top);
+        }
+
+        private static bool IsBackpackUpgrade(CardModel card)
+        {
+            for (var type = card.GetType(); type != null; type = type.BaseType)
+            {
+                if (type.IsGenericType &&
+                    type.GetGenericTypeDefinition() == typeof(BackpackUpgradeCardBase<>))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

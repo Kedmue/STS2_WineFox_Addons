@@ -1,0 +1,4 @@
+interface:
+  display_name: "RitsuLib 开发"
+  short_description: "RitsuLib 模组开发、联机同步、存档与设置指南"
+  default_prompt: "Use $ritsulib-modding to implement or debug this RitsuLib mod feature."

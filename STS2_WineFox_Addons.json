@@ -3,7 +3,7 @@
   "name": "酒狐扩展",
   "author": "Kedmue",
   "description": "基于RitsuLib和酒狐的杀戮尖塔2MOD，为模组角色酒狐添加新的卡牌、专属遗物、可选海克斯符文等，同时添加新的事件、药水和无色牌。",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "has_pck": true,
   "has_dll": true,
   "affects_gameplay": true,
