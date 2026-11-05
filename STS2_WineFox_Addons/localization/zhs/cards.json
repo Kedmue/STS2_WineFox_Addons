@@ -1,4 +1,6 @@
 {
   "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.title": "自给自足",
-  "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.description": "每回合开始时随机获得{Food:diff()}个[gold]普通食物[/gold]。"
+  "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.description": "战斗结束时，将{Food:diff()}个随机[gold]食物[/gold]加入战斗奖励。",
+  "STS2_WINE_FOX_ADDON_RECYCLING_RUNE_CHOOSE": "选择任意张要消耗的牌",
+  "STS2_WINE_FOX_ADDON_UPGRADE_GEAR_RUNE_CHOOSE": "选择要升级的牌"
 }

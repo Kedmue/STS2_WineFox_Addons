@@ -9,8 +9,9 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// 标记下界合金甲在回合结束时由覆甲产生的准确格挡来源，
-    /// 使对应符文只对该次格挡获得量进行倍率放大。
+    /// 下界合金甲本体通过覆甲与自身能力各结算一次格挡，合计形成两倍。
+    /// 符文存在时抑制自身能力的额外结算，并标记覆甲原本的格挡来源，
+    /// 使整次回合结束总格挡严格变为三倍。
     /// </summary>
     internal static class WineFoxNetheriteChestplatePatch
     {
@@ -33,9 +34,17 @@ namespace STS2_WineFox_Addons.Hextech
                         typeof(CombatSide),
                         typeof(IEnumerable<Creature>),
                     ]);
-                if (target == null)
+                var platingTarget = AccessTools.Method(
+                    typeof(PlatingPower),
+                    "BeforeSideTurnEndEarly",
+                    [
+                        typeof(PlayerChoiceContext),
+                        typeof(CombatSide),
+                        typeof(IEnumerable<Creature>),
+                    ]);
+                if (target == null || platingTarget == null)
                 {
-                    logger.Warn("未找到 NetheriteChestPlatePower.BeforeSideTurnEndEarly，跳过“升级：下界合金甲”补丁。");
+                    logger.Warn("未找到下界合金甲或覆甲的回合结束方法，跳过“升级：下界合金甲”补丁。");
                     return;
                 }
 
@@ -44,7 +53,12 @@ namespace STS2_WineFox_Addons.Hextech
                     target,
                     prefix: new HarmonyMethod(
                         typeof(WineFoxNetheriteChestplatePatch),
-                        nameof(Prefix)));
+                        nameof(SuppressNetheritePrefix)));
+                harmony.Patch(
+                    platingTarget,
+                    prefix: new HarmonyMethod(
+                        typeof(WineFoxNetheriteChestplatePatch),
+                        nameof(MarkPlatingPrefix)));
 
                 _installed = true;
                 logger.Info("已安装“升级：下界合金甲”卡牌补丁。");
@@ -56,23 +70,46 @@ namespace STS2_WineFox_Addons.Hextech
         }
 
         [HarmonyPriority(200)]
-        public static void Prefix(NetheriteChestPlatePower __instance, CombatSide side)
+        public static bool SuppressNetheritePrefix(
+            NetheriteChestPlatePower __instance,
+            CombatSide side,
+            ref Task __result)
         {
             if (side != __instance.Owner.Side)
+                return true;
+
+            var rune = __instance.Owner.Player?.Relics
+                .OfType<WineFoxNetheriteChestplateRune>()
+                .FirstOrDefault();
+            if (rune == null)
+                return true;
+
+            __result = Task.CompletedTask;
+            return false;
+        }
+
+        [HarmonyPriority(200)]
+        public static void MarkPlatingPrefix(
+            PlatingPower __instance,
+            CombatSide side,
+            IEnumerable<Creature> participants)
+        {
+            if (side != __instance.Owner.Side ||
+                !participants.Contains(__instance.Owner) ||
+                __instance.Amount <= 0m)
+            {
                 return;
+            }
 
             var player = __instance.Owner.Player;
             var rune = player?.Relics
                 .OfType<WineFoxNetheriteChestplateRune>()
                 .FirstOrDefault();
-            if (rune == null)
+            if (rune == null ||
+                !__instance.Owner.Powers.Any(power => power is NetheriteChestPlatePower))
+            {
                 return;
-
-            var plating = __instance.Owner.Powers
-                .OfType<PlatingPower>()
-                .FirstOrDefault(power => power.Amount > 0);
-            if (plating == null)
-                return;
+            }
 
             rune.MarkNetheriteBlockPending();
         }

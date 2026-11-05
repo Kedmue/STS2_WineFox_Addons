@@ -12,7 +12,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// 每回合第一次完成合成时，抽一张牌。
+    /// 每回合第一次完成合成时，抽三张牌。
     /// </summary>
     public sealed class WineFoxAssemblyLineRune : ModRelicTemplate, ICraftListener
     {
@@ -66,7 +66,7 @@ namespace STS2_WineFox_Addons.Hextech
             Flash();
             await CardPileCmd.Draw(
                 context.ChoiceContext,
-                1m,
+                3m,
                 Owner,
                 fromHandDraw: false);
         }

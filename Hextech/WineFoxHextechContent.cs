@@ -29,6 +29,9 @@ namespace STS2_WineFox_Addons.Hextech
             typeof(WineFoxTravelingTroveRune),
             typeof(WineFoxBackpackCollectorRune),
             typeof(WineFoxRichVeinRune),
+            typeof(WineFoxLogisticsRune),
+            typeof(WineFoxRecyclingRune),
+            typeof(WineFoxUpgradeGearRune),
         ];
 
         public static bool IsWineFoxRune(RelicModel? relic)
@@ -48,7 +51,9 @@ namespace STS2_WineFox_Addons.Hextech
                 runeType == typeof(WineFoxNetheriteChestplateRune) ||
                 runeType == typeof(WineFoxMaterialRefundRune) ||
                 runeType == typeof(WineFoxSteamPreludeRune) ||
-                runeType == typeof(WineFoxAssemblyLineRune))
+                runeType == typeof(WineFoxAssemblyLineRune) ||
+                runeType == typeof(WineFoxLogisticsRune) ||
+                runeType == typeof(WineFoxRecyclingRune))
                 return "Gold";
 
             return "Silver";
@@ -100,6 +105,12 @@ namespace STS2_WineFox_Addons.Hextech
             if (runeType == typeof(WineFoxBackpackCollectorRune))
                 return "COMPREHENSIVE";
             if (runeType == typeof(WineFoxRichVeinRune))
+                return "RESOURCE";
+            if (runeType == typeof(WineFoxLogisticsRune))
+                return "COMPREHENSIVE";
+            if (runeType == typeof(WineFoxRecyclingRune))
+                return "RESOURCE";
+            if (runeType == typeof(WineFoxUpgradeGearRune))
                 return "RESOURCE";
 
             return "COMPREHENSIVE";

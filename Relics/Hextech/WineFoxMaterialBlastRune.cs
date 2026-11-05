@@ -12,7 +12,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// 在拥有者回合结束时，每持有 1 份材料，
+    /// 在拥有者回合结束时，每持有 2 份材料，
     /// 就对所有可被攻击的敌人造成 1 点伤害。
     /// </summary>
     public sealed class WineFoxMaterialBlastRune : ModRelicTemplate
@@ -52,14 +52,15 @@ namespace STS2_WineFox_Addons.Hextech
             var materialCount = Owner.Creature.Powers
                 .OfType<MaterialPower>()
                 .Sum(power => power.Amount);
-            if (materialCount <= 0)
+            var damage = Math.Floor(materialCount / 2m);
+            if (damage <= 0m)
                 return;
 
             Flash(enemies);
             await CreatureCmd.Damage(
                 choiceContext,
                 enemies,
-                materialCount,
+                damage,
                 ValueProp.Unpowered,
                 Owner.Creature,
                 null);

@@ -10,13 +10,13 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Cards
 {
     /// <summary>
-    /// 自给自足：无色稀有能力牌。
-    /// 打出后每回合开始时获得 1 个随机普通食物，可叠加（打出几次每回合就发几个）。
+    /// 自给自足：无色罕见能力牌。
+    /// 战斗结束时将 1 个随机食物加入奖励列表，可叠加（打出几次就额外加入几个）。
     /// 升级后费用由 1 降为 0。
     /// </summary>
     [RegisterCard(typeof(ColorlessCardPool))]
     public sealed class SelfSufficient() : ModCardTemplate(
-        1, CardType.Power, CardRarity.Rare, TargetType.Self)
+        1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
@@ -32,7 +32,7 @@ namespace STS2_WineFox_Addons.Cards
             CardPlay play)
         {
             await PowerCmd.Apply<SelfSufficientPower>(
-                new ThrowingPlayerChoiceContext(),
+                choiceContext,
                 Owner.Creature,
                 DynamicVars["Food"].BaseValue,
                 Owner.Creature,

@@ -1,5 +1,5 @@
 {
   "STS2_WINE_FOX_ADDONS_POTION_POPUP.eat": "Eat",
   "WINE_FOX_RUNE_FOOD.title": "Food",
-  "WINE_FOX_RUNE_FOOD.description": "Wine Fox food exists as potions; using food means using the corresponding potion."
+  "WINE_FOX_RUNE_FOOD.description": "Food takes the form of potions. Eat it at any time for an immediate buff."
 }

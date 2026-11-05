@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Saves;
 using STS2_WineFox.Cards.Basic;
+using STS2_WineFox.Cards.Common;
 using STS2_WineFox.Cards.Rare;
 using STS2_WineFox.Cards.Uncommon;
 
@@ -29,6 +30,9 @@ namespace STS2_WineFox_Addons.Hextech
                 [typeof(WineFoxMechanicalSawRune)] = typeof(MechanicalSaw),
                 [typeof(WineFoxNetheriteChestplateRune)] = typeof(NetheriteChestPlate),
                 [typeof(WineFoxWirelessTerminalRune)] = typeof(WirelessTerminal),
+                [typeof(WineFoxLogisticsRune)] = typeof(Logistics),
+                [typeof(WineFoxRecyclingRune)] = typeof(Recycling),
+                [typeof(WineFoxUpgradeGearRune)] = typeof(UpgradeGear),
             };
 
         public static bool TryGetSelectionFooter(

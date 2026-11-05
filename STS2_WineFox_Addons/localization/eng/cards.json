@@ -1,4 +1,6 @@
 {
   "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.title": "Self-Sufficient",
-  "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.description": "At the start of each turn, gain {Food:diff()} random [gold]common food[/gold]."
+  "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.description": "At the end of combat, add {Food:diff()} random [gold]Food[/gold] to your rewards.",
+  "STS2_WINE_FOX_ADDON_RECYCLING_RUNE_CHOOSE": "Choose any number of cards to Exhaust",
+  "STS2_WINE_FOX_ADDON_UPGRADE_GEAR_RUNE_CHOOSE": "Choose cards to upgrade"
 }

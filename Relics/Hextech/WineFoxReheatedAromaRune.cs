@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Saves.Runs;
 using STS2_WineFox.Potions;
 using STS2RitsuLib.Scaffolding.Content;
 
@@ -20,17 +19,9 @@ namespace STS2_WineFox_Addons.Hextech
     /// </summary>
     public sealed class WineFoxReheatedAromaRune : ModRelicTemplate
     {
-        public const int MaxTriggersPerCombat = 2;
-
-        private int _triggersThisCombat;
-
         // 海克斯大乱斗在内部会把所有外部玩家符文视为初始稀有度遗物；
         // 白银、黄金、棱彩等实际稀有度由注册元数据提供。
         public override RelicRarity Rarity => RelicRarity.Starter;
-
-        public override bool ShowCounter => true;
-
-        public override int DisplayAmount => Math.Max(0, MaxTriggersPerCombat - TriggersThisCombat);
 
         public override RelicAssetProfile AssetProfile => new(
             "res://STS2_WineFox_Addons/relics/hextech_stoke_rune.png",
@@ -44,24 +35,6 @@ namespace STS2_WineFox_Addons.Hextech
                 new LocString("gameplay_ui", "WINE_FOX_RUNE_FOOD.description")),
         ];
 
-        [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
-        public int TriggersThisCombat
-        {
-            get => _triggersThisCombat;
-            set
-            {
-                AssertMutable();
-                _triggersThisCombat = Math.Clamp(value, 0, MaxTriggersPerCombat);
-                InvokeDisplayAmountChanged();
-            }
-        }
-
-        public override Task BeforeCombatStart()
-        {
-            TriggersThisCombat = 0;
-            return Task.CompletedTask;
-        }
-
         public override async Task AfterPotionUsed(PotionModel potion, Creature? target)
         {
             if (potion is not SellableToMerchantPotionModel || potion.Owner != Owner)
@@ -71,10 +44,9 @@ namespace STS2_WineFox_Addons.Hextech
             if (combatManager == null || !combatManager.IsInProgress || combatManager.IsOverOrEnding)
                 return;
 
-            if (Owner.Creature.IsDead || TriggersThisCombat >= MaxTriggersPerCombat)
+            if (Owner.Creature.IsDead)
                 return;
 
-            TriggersThisCombat++;
             Flash();
 
             await PlayerCmd.GainEnergy(1m, Owner);

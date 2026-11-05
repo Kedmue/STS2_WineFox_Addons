@@ -68,7 +68,7 @@ dotnet build -c Debug
 - 完整发布构建：
 
 ```powershell
-dotnet publish -c Release
+dotnet publish STS2_WineFox_Addons.csproj -c Release
 ```
 
 - `publish` 会复制 DLL/清单并调用 Godot 导出 PCK。PCK 导出目标允许失败后继续，因此不能只看命令退出码；必须确认三个部署产物都存在且时间正确：
@@ -157,9 +157,9 @@ D:\SteamLibrary\steamapps\common\Slay the Spire 2\mods\STS2_WineFox_Addons\
 
 ### 自给自足与滋养
 
-- “自给自足”是无色稀有 1 费能力牌，升级后 0 费。
-- 每回合开始时，按能力层数获得等量随机普通食物。打出 N 次便获得 N 层，效果必须可叠加。
-- 药水槽满时停止发放，不能虚构已获得的食物。
+- “自给自足”是无色罕见 1 费能力牌，升级后 0 费。
+- 战斗结束时，按能力层数将等量随机食物加入战斗奖励列表；食物可来自任意稀有度。打出 N 次便获得 N 层，效果必须可叠加。
+- 食物必须作为可读档的 `PotionReward` 子类进入 `CombatRoom.ExtraRewards`，不能直接调用 `PotionCmd.TryToProcure` 塞进药水槽。
 - “滋养”每层在玩家回合结束时回复 1 点生命；受到未被格挡的伤害时，完全免疫该次伤害并移除 1 层。
 - 滋养不随回合自然衰减。只有实际挡下大于 0 的未格挡伤害时才减层。
 - 描述中出现“滋养”时，应带可悬停关键词提示。

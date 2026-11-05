@@ -35,6 +35,9 @@ namespace STS2_WineFox_Addons.Hextech
                 WineFoxMechanicalSawPatch.Install(logger);
                 WineFoxNetheriteChestplatePatch.Install(logger);
                 WineFoxStoneArmorRunePatch.Install(logger);
+                WineFoxLogisticsRunePatch.Install(logger);
+                WineFoxRecyclingRunePatch.Install(logger);
+                WineFoxUpgradeGearRunePatch.Install(logger);
                 WineFoxRuneSelectionFooterPatch.Install(logger);
                 WineFoxLegacyInnateMarkerPatch.Install(logger);
 
