@@ -10,7 +10,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// 每次完成合成后获得三点格挡。
+    /// 每次完成合成后获得五点格挡。
     /// </summary>
     public sealed class WineFoxSawdustWardRune : ModRelicTemplate, ICraftListener
     {
@@ -34,7 +34,7 @@ namespace STS2_WineFox_Addons.Hextech
             Flash();
             await CreatureCmd.GainBlock(
                 Owner.Creature,
-                3m,
+                5m,
                 ValueProp.Unpowered,
                 null);
         }

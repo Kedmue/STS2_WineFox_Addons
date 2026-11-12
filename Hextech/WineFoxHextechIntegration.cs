@@ -2,6 +2,8 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Multiplayer.Game;
+using MegaCrit.Sts2.Core.Runs;
 using STS2RitsuLib;
 using STS2_WineFox.Character;
 using STS2_WineFox_Addons.Scripts;
@@ -51,7 +53,7 @@ namespace STS2_WineFox_Addons.Hextech
                         characterOrder: 0,
                         tagKey: WineFoxHextechContent.GetTagKey(runeType),
                         assetModId: Entry.ModId,
-                        isAvailableForPlayer: IsWineFoxPlayer);
+                        isAvailableForPlayer: GetPlayerAvailability(runeType));
 
                     // 酒狐是外部角色，原版的角色池枚举无法表示它。
                     // 因此通过互操作接口把每枚符文映射到实际角色模型，
@@ -103,6 +105,28 @@ namespace STS2_WineFox_Addons.Hextech
         {
             return player.Character is WineFox ||
                    player.Character.Id.Entry.Contains("winefox", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static Func<Player, bool> GetPlayerAvailability(Type runeType)
+        {
+            return runeType == typeof(WineFoxLogisticsRune)
+                ? IsWineFoxPlayerInMultiplayer
+                : IsWineFoxPlayer;
+        }
+
+        private static bool IsWineFoxPlayerInMultiplayer(Player player)
+        {
+            if (!IsWineFoxPlayer(player))
+                return false;
+
+            try
+            {
+                return RunManager.Instance?.NetService?.Type.IsMultiplayer() == true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private static void VerifyAfterEssentialInitialization(Logger logger)

@@ -107,7 +107,7 @@ namespace STS2_WineFox_Addons.Hextech
             if (runeType == typeof(WineFoxRichVeinRune))
                 return "RESOURCE";
             if (runeType == typeof(WineFoxLogisticsRune))
-                return "COMPREHENSIVE";
+                return "MULTIPLAYER";
             if (runeType == typeof(WineFoxRecyclingRune))
                 return "RESOURCE";
             if (runeType == typeof(WineFoxUpgradeGearRune))

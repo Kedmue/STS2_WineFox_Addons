@@ -7,49 +7,44 @@
 - 项目名：`STS2_WineFox_Addons`，中文名“酒狐扩展”。
 - 类型：《杀戮尖塔 2》的 C# 模组，基于 RitsuLib，以酒狐模组作为主要前置。
 - 目标游戏版本：`0.107.1`。
-- 必需依赖：RitsuLib `>= 0.5.0`、酒狐 `>= 1.2.15`。
-- 酒狐最新版本使用 `1.2.15.1` 这类四段版本号。
-- 可选联动：海克斯大乱斗（HextechRunes）`>= 0.9.8`。未安装时不得影响扩展的其他内容。
+- 海克斯大乱斗为可选联动，未安装时不得影响扩展的其他内容。
 - 许可证：MIT。
 - 当前清单版本以 `STS2_WineFox_Addons.json` 为准；聊天记录中的版本号或旧 README 不得覆盖清单。
 
 用户主要使用简体中文交流。回复应先给结论，再给证据和影响；不要用推测代替日志或代码事实。
 
-## 必须遵守的约束
+## 约束
 
-1. 不要为其他模组增加未经用户明确要求的专门兼容补丁。现有海克斯联动是项目主动设计的内容，不是对所有第三方模组的通用兼容承诺。
-2. 不要因为一次联机日志结论就擅自修改酒狐、RitsuLib、海克斯或其他上游模组。先判断问题属于扩展、酒狐、RitsuLib、原版还是环境差异，并记录证据。
+1. 不要为其他模组增加未经用户明确要求的专门兼容补丁。
+2. 不要因为一次联机日志结论就擅自修改其他上游模组。
 3. 不要删除、重置或覆盖用户已有的未提交改动。不要运行 `git reset --hard`、`git checkout --` 或其他可能丢失工作区改动的命令。
-4. 部署、覆盖 DLL/PCK 或操作被游戏占用的文件前，先确认游戏已关闭。
-5. 不要把 `Decompiled/`、`bin/`、`obj/`、`.godot/`、`tmp/`、`output/` 中的构建产物或本地反编译源码当作可提交的项目源码。
-6. 不要提交游戏本体资源，也不要通过复制原版资源来规避自制素材工作；短期占位素材应明确标记，并在发布前评估替换。
-7. 除非用户明确要求发布，否则不要自动上传创意工坊、推送 GitHub、创建 release 或修改工坊可见性。
-8. 修改稳定内容 ID、存档字段或已发布模型名称可能破坏旧存档和联机一致性；如确需变更，先说明迁移方案。
+4. 不要把 `Decompiled/`、`bin/`、`obj/`、`.godot/`、`tmp/`、`output/` 中的构建产物或本地反编译源码当作可提交的项目源码。
+5. 除非用户明确要求发布，否则不要自动上传创意工坊、推送 GitHub、创建 release 或修改工坊可见性。
 
 ## 目录与职责
 
 | 路径 | 职责 |
 | --- | --- |
-| `Scripts/Entry.cs` | 模组入口、程序集注册、设置初始化、补丁安装、酒狐运行时版本检查 |
+| `Scripts/Entry.cs` | 模组入口、注册、初始化、补丁安装和酒狐版本检查 |
 | `Cards/` | 卡牌，目前包含无色卡“自给自足” |
 | `Potions/Food/` | 普通食物，注册到酒狐的 `WineFoxFoodPotionPool` |
 | `Potions/Dishes/` | 菜肴，注册到 `WineFoxAddonsDishPotionPool` |
-| `Potions/DishPotionModel.cs`、`DishLoot.cs` | 菜肴基类和菜肴随机获取逻辑 |
+| `Potions/DishPotionModel.cs`、`DishLoot.cs` | 菜肴基类和获取逻辑 |
 | `Powers/` | 自定义能力、跨回合效果和隐藏机制能力 |
 | `Keywords/` | 扩展关键词及悬停说明，目前包含“滋养” |
-| `Relics/` | 酒狐专属遗物及可选海克斯符文 |
+| `Relics/` | 酒狐专属遗物；海克斯符文位于 `Relics/Hextech/` |
 | `Events/` | “深夜食堂”和“尖塔村落”事件 |
-| `Rewards/` | 可稳定读档的菜肴奖励 |
+| `Rewards/` | 可稳定读档的食物与菜肴奖励 |
 | `Settings/` | RitsuLib 设置页、持久化和联机同步 |
-| `Patches/` | 食物掉落、Boss 菜肴奖励、食物按钮文案、联机同步和可选互操作入口 |
+| `Patches/` | 食物掉落、菜肴奖励、食用按钮文案、联机同步和互操作入口 |
 | `Utils/` | 酒狐内部 API 的兼容封装 |
-| `Hextech/` | 可选海克斯联动、互操作桥接和卡牌持久化状态 |
-| `STS2_WineFox_Addons/` | Godot 导出的资源根目录：图标、事件立绘和中英文本地化 |
+| `Hextech/` | 可选海克斯互操作、注册、补丁桥接和持久状态 |
+| `STS2_WineFox_Addons/` | Godot 资源根目录：图标、立绘和中英文本地化 |
 | `STS2_WineFox_Addons.json` | 模组清单、依赖和版本 |
 | `export_presets.cfg` | Godot PCK 导出配置 |
-| `README.md` | 面向使用者的内容、安装、构建和目录说明 |
-| `tools/` | 本地构建、解包和延迟部署辅助脚本 |
-| `.agents/skills/ritsulib-modding/` | 项目级 RitsuLib 开发技能：内容注册、生命周期、补丁、持久化、设置、联机同步和互操作 |
+| `README.md` | 面向使用者的内容、安装和构建说明 |
+| `tools/` | 本地构建、解包和延迟部署脚本 |
+| `.agents/skills/ritsulib-modding/` | 项目级 RitsuLib 开发技能 |
 
 `.uid` 是 Godot 资源引用的一部分，`.import` 描述资源导入设置。新增或替换图片时，不要随意删除同目录的这些文件；提交资源时应成套检查。
 
@@ -57,7 +52,6 @@
 
 - .NET SDK：9。
 - Godot：4.5.1 .NET/Mono 版。
-- `STS2_WineFox_Addons.csproj` 中的 `Sts2Dir` 和 `GodotExe` 是本机路径，不应为了让某台机器通过构建而覆盖其他环境所需的配置。
 - 酒狐引用优先读取本地 `mods/STS2_WineFox`；找不到时回退到 Steam 创意工坊目录。
 - 常规编译：
 
@@ -79,12 +73,7 @@ STS2_WineFox_Addons.json
 STS2_WineFox_Addons.pck
 ```
 
-- 默认部署目录由 `Sts2Dir` 决定。当前常见位置是：
-
-```text
-D:\SteamLibrary\steamapps\common\Slay the Spire 2\mods\STS2_WineFox_Addons\
-```
-
+- 部署前确认游戏已关闭；默认部署目录由 `Sts2Dir` 决定。
 - `tools/deploy_when_game_closes.ps1` 只用于用户明确要求延迟部署的场景。不要把它作为常规发布路径。
 - 本项目没有独立测试工程。至少执行编译，并按改动风险进行游戏内验证。涉及资源、注册、奖励、事件或联机时，只编译通过不足以证明功能正常。
 
@@ -92,22 +81,7 @@ D:\SteamLibrary\steamapps\common\Slay the Spire 2\mods\STS2_WineFox_Addons\
 
 - 根命名空间使用 `STS2_WineFox_Addons`。
 - 优先使用 RitsuLib 的内容注册、命令、补丁、存档和互操作封装；仅在框架没有合适入口时使用 Harmony。
-- 注册模型优先使用 RitsuLib 自动注册特性：
-  - 食物：`[RegisterPotion(typeof(WineFoxFoodPotionPool))]`
-  - 菜肴：`[RegisterPotion(typeof(WineFoxAddonsDishPotionPool))]`
-  - 能力：`[RegisterPower]`
-  - 卡牌：`[RegisterCard(typeof(ColorlessCardPool))]` 或其他明确卡池
-  - 酒狐遗物：`[RegisterRelic(typeof(WineFoxRelicPool))]`
 - 普通代码使用现代 C# 13、可空引用和集合表达式；新增文件遵守项目现有风格，不进行无关格式化。
-- 酒狐内部 `internal` 类型不能直接引用时，使用最小范围反射封装，并保持失败安全；不要复制大段上游逻辑。
-- 所有补丁必须在 `Entry.ApplyPatches()` 中注册。补丁 ID 要唯一、稳定，描述当前实际行为。
-- 除功能不可缺少外，`IsCritical` 应为 `false`。补丁初始化失败不能阻止扩展其他内容加载。
-- 奖励生成、事件结算和 Postfix 中的异常必须兜底并记录日志，避免一次异常中断房间结算、读档重进后再次卡死。
-- 模型是规范实例，不应被原地修改。需要进入奖励、牌组或玩家状态时使用 `ToMutable()`。
-- 随机内容必须走游戏 RNG，例如 `player.PlayerRng.Rewards`，不要使用 `System.Random`。
-- 先执行掉落条件、解锁条件和队伍条件判断，再取随机结果；失败条件不能消耗奖励 RNG。
-- 游戏内不能只存在于本地静态字段的可变战斗状态必须使用 RitsuLib 的存档附着状态或现有存档属性机制，确保读档和联机一致。
-- 修改注册的时机时先确认 RitsuLib 生命周期。依赖互操作绑定的内容必须等 `LocManager.Initialize` 前置绑定完成后再注册。
 - 涉及 RitsuLib API、生命周期、补丁、持久化、设置或联机同步的任务，使用项目技能 `$ritsulib-modding`，先阅读 `.agents/skills/ritsulib-modding/SKILL.md` 及其路由的参考文件。
 
 ## 版本兼容
@@ -116,8 +90,7 @@ D:\SteamLibrary\steamapps\common\Slay the Spire 2\mods\STS2_WineFox_Addons\
 
 - 扩展最低要求酒狐 `1.2.15`。
 - 不要在 `STS2_WineFox_Addons.json` 中给 `STS2_WineFox` 写 `min_version`。游戏内置版本解析只接受三段版本，酒狐的 `1.2.15.1` 会导致 `DEPENDENCY_VERSION_INVALID`，使扩展无法加载。
-- 保持 `Entry.WarnIfWineFoxOutdated()` 中的运行时检查。它可以解析 `1.2.15`、`1.2.15.1`、`v1.2.15` 和带预发布后缀的版本。
-- 该检查默认只记录日志。若用户要求将低版本酒狐从“警告”改为“硬阻断”，需先评估游戏加载流程和联机房间兼容性。
+- 保持 `Entry.WarnIfWineFoxOutdated()` 中的运行时检查。它可以解析 `1.2.15`、`1.2.15.1`、`v1.2.15` 和带预发布后缀的版本。该检查默认只记录日志。
 
 ### 可选海克斯
 
@@ -139,19 +112,16 @@ D:\SteamLibrary\steamapps\common\Slay the Spire 2\mods\STS2_WineFox_Addons\
 - 食物使用时机为 `AnyTime`；战斗内效果写在 `OnUseInCombat`。
 - 第一个使用按钮统一显示“食用”，通过扩展本地化键和 `FoodEatLabelPatch` 实现，不能直接改原版全局 `POTION_POPUP.drink`。
 - 非食物药水必须继续显示原版“饮用”文案。
-- 已有普通食物包括卷心菜、洋葱、稻米、番茄、炒饭、玉米和烤玉米。稻米、玉米在篝火分别变为炒饭、烤玉米。
 
 ### 菜肴
 
-- 菜肴属于食物：继承 `DishPotionModel`，因此也可以卖给商人。
-- 注册到 `WineFoxAddonsDishPotionPool`，不得混入普通食物池。
+- 菜肴属于食物：继承 `DishPotionModel`，可投掷给商人；注册到 `WineFoxAddonsDishPotionPool`，不得混入普通食物池。
 - 稀有度为稀有，售价按强度单独设定。
-- 目前唯一获取途径是击败 Boss 后必定掉落一个，每份奖励集最多一个。
-- 最终幕 Boss 不额外产出菜肴，与游戏不在末章生成结算奖励的规则一致。
+- 目前唯一获取途径是击败 Boss 后必定掉落一个，每份奖励集最多一个；最终幕 Boss 不额外产出。
 - 菜肴掉落受“全角色食物掉落”设置影响：关闭时队伍中必须有酒狐，开启时不限角色。
 - 生成奖励前必须通过 `ToMutable()` 获得可变实例；直接传入规范模型会抛 `CanonicalModelException`。
 - 奖励使用 `DishPotionReward` 写入具体模型 ID，防止读档后重新随机。
-- 所有菜肴都获得 1 层“滋养”。文案顺序统一为：回复生命、获得滋养、获得其他效果。
+- 所有菜肴都获得 1 层“滋养”；文案顺序为回复生命、获得滋养、获得其他效果。
 - 战斗外只保留回复生命；抽牌、能量、复制、伤害等战斗效果仅在 `OnUseInCombat` 生效。
 - 当前菜肴：填馅南瓜、牧羊人派、蜜汁火腿、烤鸡。新增菜肴时避免与现有食物和菜肴的效果轴重复。
 
@@ -161,7 +131,7 @@ D:\SteamLibrary\steamapps\common\Slay the Spire 2\mods\STS2_WineFox_Addons\
 - 战斗结束时，按能力层数将等量随机食物加入战斗奖励列表；食物可来自任意稀有度。打出 N 次便获得 N 层，效果必须可叠加。
 - 食物必须作为可读档的 `PotionReward` 子类进入 `CombatRoom.ExtraRewards`，不能直接调用 `PotionCmd.TryToProcure` 塞进药水槽。
 - “滋养”每层在玩家回合结束时回复 1 点生命；受到未被格挡的伤害时，完全免疫该次伤害并移除 1 层。
-- 滋养不随回合自然衰减。只有实际挡下大于 0 的未格挡伤害时才减层。
+- 滋养不随回合自然衰减，只有实际挡下大于 0 的未格挡伤害时才减层。
 - 描述中出现“滋养”时，应带可悬停关键词提示。
 
 ### 遗物与事件
@@ -232,12 +202,11 @@ state-divergence-report.txt
 - RNG 种子和计数器
 - `savedProperties.mapHash`
 
-2026-10-20 的一次已分析分歧发生在主机预留手摇曲柄选择 ID 后：主机下次选择编号为 `7`，客户端为 `6`；客户端执行手摇曲柄时复用了地图投票 ID `5` 的 `indexes 4`，对只有两个选项的选牌越界，随后两名客户端都报告 `StateDivergence`。该问题指向酒狐 `HandCrank` 与 RitsuLib 的选择编号同步，不应在酒狐扩展里添加临时绕过补丁。可建议与上游提交诊断包，并在最小模组集和统一 RitsuLib 版本下复测。
+历史案例（2026-10-20）：客户端执行酒狐 `HandCrank` 选牌时复用了地图投票的 Choice ID，导致索引越界并触发 `StateDivergence`。问题指向酒狐与 RitsuLib 的选择编号同步；不要在扩展内临时绕过，应向对应上游提交诊断包，并在最小模组集及统一版本下复测。
 
 ## 资源与发布
 
-- 卡牌、能力和事件图片放入 `STS2_WineFox_Addons/` 下对应分类目录，资源路径使用 `res://STS2_WineFox_Addons/...`。
-- 替换图片时保持用户指定的文件名和资源路径，避免仅复制文件却遗漏 `.import` 更新。
+- 卡牌、能力和事件图片放入 `STS2_WineFox_Addons/` 的分类目录，路径使用 `res://STS2_WineFox_Addons/...`；替换图片时保留既有文件名并同步更新 `.import`。
 - 生成或修改图片后，检查尺寸、透明通道、边缘裁切和游戏内实际显示效果。
 - 发布版本时统一核对以下位置：
   - `STS2_WineFox_Addons.json` 的 `version`
@@ -256,7 +225,7 @@ state-divergence-report.txt
 ## 修改后的最低验证清单
 
 1. 运行 `dotnet build -c Debug`，确认 C# 编译和注册代码无误。
-2. 涉及 PCK/资源时运行 `dotnet publish -c Release`，确认 DLL、JSON、PCK 三者都生成。
+2. 涉及 PCK/资源时运行 `dotnet publish STS2_WineFox_Addons.csproj -c Release`，确认 DLL、JSON、PCK 三者都生成。
 3. 校验所有修改过的 JSON 可解析，并确认中英本地化键及占位符一致。
 4. 确认每个新增资源路径存在，图片可由 Godot 导入。
 5. 涉及内容注册时检查 `Entry.cs` 的初始化顺序和补丁注册。
