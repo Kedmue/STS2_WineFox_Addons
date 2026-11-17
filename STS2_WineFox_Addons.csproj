@@ -35,7 +35,7 @@
             <Private>false</Private>
         </Reference>
 
-        <PackageReference Include="STS2.RitsuLib.Compat.0.107.1" Version="*" />
+        <PackageReference Include="STS2.RitsuLib.Compat.0.111.0" Version="0.6.14" />
     </ItemGroup>
 
     <ItemGroup>
