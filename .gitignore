@@ -4,6 +4,7 @@
 
 # 本地反编译的游戏源码，仅作参考，不属于本项目，体积也很大
 /Decompiled/
+/Decompiled.pre-*/
 
 # 构建产物
 bin/
@@ -23,3 +24,10 @@ obj/
 # 系统文件
 Thumbs.db
 .DS_Store
+
+# 本地代理、工作流和发布辅助文件，不属于模组内容
+/AGENTS.md
+/.agents/
+/.model-desk/
+/mod-uploader.log
+/$null
