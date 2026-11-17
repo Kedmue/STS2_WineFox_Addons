@@ -99,7 +99,8 @@ namespace STS2_WineFox_Addons.Powers
                 MaterialSparkDamage,
                 ValueProp.Unpowered,
                 Owner,
-                evt.SourceCard);
+                evt.SourceCard,
+                null);
         }
     }
 }

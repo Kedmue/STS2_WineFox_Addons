@@ -62,8 +62,7 @@ namespace STS2_WineFox_Addons.Hextech
                 enemies,
                 damage,
                 ValueProp.Unpowered,
-                Owner.Creature,
-                null);
+                Owner.Creature);
         }
     }
 }

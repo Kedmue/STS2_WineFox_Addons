@@ -66,8 +66,8 @@ namespace STS2_WineFox_Addons.Hextech
                 Owner.Creature,
                 1m,
                 ValueProp.Unblockable | ValueProp.Unpowered,
-                Owner.Creature,
-                cardPlay.Card);
+                cardPlay.Card,
+                cardPlay);
         }
     }
 }

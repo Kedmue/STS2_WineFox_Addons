@@ -3,10 +3,12 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
 using STS2_WineFox.Cards.Uncommon;
 using STS2_WineFox.Commands;
 using STS2_WineFox.Powers;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Utils;
 
 namespace STS2_WineFox_Addons.Hextech
 {
@@ -17,6 +19,9 @@ namespace STS2_WineFox_Addons.Hextech
     public sealed class WineFoxMechanicalSawRune : ModRelicTemplate
     {
         private const decimal BonusDamagePerStress = 7m;
+
+        private static readonly AttachedState<CardModel, int> SeriesStress =
+            new(static () => 0);
 
         public override RelicRarity Rarity => RelicRarity.Starter;
 
@@ -48,17 +53,31 @@ namespace STS2_WineFox_Addons.Hextech
             if (owner == null || combatState == null)
                 return;
 
-            var stressCount = owner.Powers
-                .OfType<StressPower>()
-                .Sum(power => power.Amount);
-
-            var consumed = 0;
-            for (var i = 0; i < stressCount; i++)
+            var consumed = SeriesStress.GetValueOrDefault(card);
+            if (play.IsFirstInSeries)
             {
-                if (!await StressCmd.ConsumeOne(owner, card))
-                    break;
+                consumed = 0;
+                if (MaterialCmd.IsFreePlay(play))
+                {
+                    // 本体把免费打出视为消耗 1 层应力，但不会实际扣除应力。
+                    consumed = 1;
+                }
+                else
+                {
+                    var stressCount = owner.Powers
+                        .OfType<StressPower>()
+                        .Sum(power => power.Amount);
 
-                consumed++;
+                    for (var i = 0; i < stressCount; i++)
+                    {
+                        if (!await StressCmd.ConsumeOne(owner, card))
+                            break;
+
+                        consumed++;
+                    }
+                }
+
+                SeriesStress.Set(card, consumed);
             }
 
             if (consumed > 0)
@@ -68,7 +87,7 @@ namespace STS2_WineFox_Addons.Hextech
                          BonusDamagePerStress * consumed;
 
             await DamageCmd.Attack(damage)
-                .FromCard(card)
+                .FromCard(card, play)
                 .TargetingAllOpponents(combatState)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
