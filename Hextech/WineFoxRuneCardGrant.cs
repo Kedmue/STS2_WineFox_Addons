@@ -33,6 +33,7 @@ namespace STS2_WineFox_Addons.Hextech
                 [typeof(WineFoxLogisticsRune)] = typeof(Logistics),
                 [typeof(WineFoxRecyclingRune)] = typeof(Recycling),
                 [typeof(WineFoxUpgradeGearRune)] = typeof(UpgradeGear),
+                [typeof(WineFoxAlterPathRune)] = typeof(AlterPath),
             };
 
         public static bool TryGetSelectionFooter(

@@ -32,6 +32,9 @@ namespace STS2_WineFox_Addons.Hextech
             typeof(WineFoxLogisticsRune),
             typeof(WineFoxRecyclingRune),
             typeof(WineFoxUpgradeGearRune),
+            typeof(WineFoxAlterPathRune),
+            typeof(WineFoxFeastPreparationRune),
+            typeof(WineFoxUniversalStressRune),
         ];
 
         public static bool IsWineFoxRune(RelicModel? relic)
@@ -45,7 +48,8 @@ namespace STS2_WineFox_Addons.Hextech
                 runeType == typeof(WineFoxWirelessTerminalRune) ||
                 runeType == typeof(WineFoxTravelingTroveRune) ||
                 runeType == typeof(WineFoxBackpackCollectorRune) ||
-                runeType == typeof(WineFoxRichVeinRune))
+                runeType == typeof(WineFoxRichVeinRune) ||
+                runeType == typeof(WineFoxFeastPreparationRune))
                 return "Prismatic";
             if (runeType == typeof(WineFoxMaterialBlastRune) ||
                 runeType == typeof(WineFoxNetheriteChestplateRune) ||
@@ -53,7 +57,9 @@ namespace STS2_WineFox_Addons.Hextech
                 runeType == typeof(WineFoxSteamPreludeRune) ||
                 runeType == typeof(WineFoxAssemblyLineRune) ||
                 runeType == typeof(WineFoxLogisticsRune) ||
-                runeType == typeof(WineFoxRecyclingRune))
+                runeType == typeof(WineFoxRecyclingRune) ||
+                runeType == typeof(WineFoxAlterPathRune) ||
+                runeType == typeof(WineFoxUniversalStressRune))
                 return "Gold";
 
             return "Silver";
@@ -81,7 +87,8 @@ namespace STS2_WineFox_Addons.Hextech
                 runeType == typeof(WineFoxRecyclingRune))
                 return "MATERIAL";
             if (runeType == typeof(WineFoxMechanicalSawRune) ||
-                runeType == typeof(WineFoxSteamPreludeRune))
+                runeType == typeof(WineFoxSteamPreludeRune) ||
+                runeType == typeof(WineFoxUniversalStressRune))
                 return "STRESS";
             if (runeType == typeof(WineFoxReheatedAromaRune))
                 return "COMPREHENSIVE";
@@ -106,6 +113,9 @@ namespace STS2_WineFox_Addons.Hextech
             if (runeType == typeof(WineFoxMaterialSparkRune) ||
                 runeType == typeof(WineFoxMaterialBlastRune))
                 return "OUTPUT";
+            if (runeType == typeof(WineFoxAlterPathRune) ||
+                runeType == typeof(WineFoxFeastPreparationRune))
+                return "COMPREHENSIVE";
 
             return "COMPREHENSIVE";
         }
