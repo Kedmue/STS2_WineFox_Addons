@@ -159,7 +159,10 @@ namespace STS2_WineFox_Addons.Hextech
                 var iconPath = relic.IconPath;
                 var hoverTipCount = relic.HoverTips.Count();
                 var poolLabelExists = LocString.Exists("relic_collection", "HEXTECH_POOL.WINE_FOX");
-                var tagLabelExists = LocString.Exists("relic_collection", "HEXTECH_TAG.FOOD");
+                var tagLabelExists =
+                    LocString.Exists("relic_collection", "HEXTECH_TAG.CRAFT") &&
+                    LocString.Exists("relic_collection", "HEXTECH_TAG.MATERIAL") &&
+                    LocString.Exists("relic_collection", "HEXTECH_TAG.STRESS");
                 var sourceLabelExists = LocString.Exists("relic_collection", "WINE_FOX_ADDON_SECTION");
                 logger.Info(
                     $"海克斯符文自检通过：id={id}, title={relic.Title.GetFormattedText()}, " +

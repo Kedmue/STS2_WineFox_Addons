@@ -72,44 +72,36 @@ namespace STS2_WineFox_Addons.Hextech
 
         public static string GetTagKey(Type runeType)
         {
-            if (runeType == typeof(WineFoxReheatedAromaRune))
-                return "FOOD";
-            if (runeType == typeof(WineFoxBasicCraftInnateRune))
-                return "RESOURCE";
-            if (runeType == typeof(WineFoxIntermittentChantingRune))
-                return "OUTPUT";
+            if (runeType == typeof(WineFoxBasicCraftInnateRune) ||
+                runeType == typeof(WineFoxSawdustWardRune) ||
+                runeType == typeof(WineFoxAssemblyLineRune) ||
+                runeType == typeof(WineFoxWirelessTerminalRune) ||
+                runeType == typeof(WineFoxTravelingTroveRune))
+                return "CRAFT";
+            if (runeType == typeof(WineFoxMaterialSparkRune) ||
+                runeType == typeof(WineFoxMaterialBlastRune) ||
+                runeType == typeof(WineFoxMaterialRefundRune) ||
+                runeType == typeof(WineFoxRichVeinRune) ||
+                runeType == typeof(WineFoxRecyclingRune))
+                return "MATERIAL";
             if (runeType == typeof(WineFoxMechanicalSawRune))
+                return "STRESS";
+            if (runeType == typeof(WineFoxReheatedAromaRune))
+                return "COMPREHENSIVE";
+            if (runeType == typeof(WineFoxIntermittentChantingRune))
                 return "OUTPUT";
             if (runeType == typeof(WineFoxStoneArmorRune))
                 return "SURVIVAL";
-            if (runeType == typeof(WineFoxMaterialSparkRune))
-                return "OUTPUT";
-            if (runeType == typeof(WineFoxSawdustWardRune))
-                return "SURVIVAL";
             if (runeType == typeof(WineFoxMyriadDepotRune))
                 return "DRAW";
-            if (runeType == typeof(WineFoxMaterialBlastRune))
-                return "OUTPUT";
             if (runeType == typeof(WineFoxNetheriteChestplateRune))
                 return "SURVIVAL";
-            if (runeType == typeof(WineFoxMaterialRefundRune))
-                return "RESOURCE";
             if (runeType == typeof(WineFoxSteamPreludeRune))
                 return "RESOURCE";
-            if (runeType == typeof(WineFoxAssemblyLineRune))
-                return "DRAW";
-            if (runeType == typeof(WineFoxWirelessTerminalRune))
-                return "RESOURCE";
-            if (runeType == typeof(WineFoxTravelingTroveRune))
-                return "DRAW";
             if (runeType == typeof(WineFoxBackpackCollectorRune))
                 return "COMPREHENSIVE";
-            if (runeType == typeof(WineFoxRichVeinRune))
-                return "RESOURCE";
             if (runeType == typeof(WineFoxLogisticsRune))
                 return "MULTIPLAYER";
-            if (runeType == typeof(WineFoxRecyclingRune))
-                return "RESOURCE";
             if (runeType == typeof(WineFoxUpgradeGearRune))
                 return "RESOURCE";
 

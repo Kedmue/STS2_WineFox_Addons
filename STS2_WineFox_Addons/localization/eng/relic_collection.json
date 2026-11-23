@@ -1,8 +1,8 @@
 {
   "HEXTECH_POOL.WINE_FOX": "Wine Fox",
-  "HEXTECH_TAG.FOOD": "Feast",
-  "HEXTECH_TAG.RESOURCE": "Resources",
-  "HEXTECH_TAG.OUTPUT": "Output",
+  "HEXTECH_TAG.CRAFT": "Craft",
+  "HEXTECH_TAG.MATERIAL": "Materials",
+  "HEXTECH_TAG.STRESS": "Stress",
   "WINE_FOX_ADDON_SECTION": "Wine Fox Addons",
   "HEXTECH_CHARACTER.WINE_FOX": "[gold][font_size=28][b]Wine Fox Hextech:[/b][/font_size][/gold] Hextech runes available only to the Wine Fox."
 }
