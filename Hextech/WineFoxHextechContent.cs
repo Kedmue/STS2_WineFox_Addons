@@ -74,17 +74,14 @@ namespace STS2_WineFox_Addons.Hextech
         {
             if (runeType == typeof(WineFoxBasicCraftInnateRune) ||
                 runeType == typeof(WineFoxSawdustWardRune) ||
-                runeType == typeof(WineFoxAssemblyLineRune) ||
-                runeType == typeof(WineFoxWirelessTerminalRune) ||
-                runeType == typeof(WineFoxTravelingTroveRune))
+                runeType == typeof(WineFoxWirelessTerminalRune))
                 return "CRAFT";
-            if (runeType == typeof(WineFoxMaterialSparkRune) ||
-                runeType == typeof(WineFoxMaterialBlastRune) ||
-                runeType == typeof(WineFoxMaterialRefundRune) ||
+            if (runeType == typeof(WineFoxMaterialRefundRune) ||
                 runeType == typeof(WineFoxRichVeinRune) ||
                 runeType == typeof(WineFoxRecyclingRune))
                 return "MATERIAL";
-            if (runeType == typeof(WineFoxMechanicalSawRune))
+            if (runeType == typeof(WineFoxMechanicalSawRune) ||
+                runeType == typeof(WineFoxSteamPreludeRune))
                 return "STRESS";
             if (runeType == typeof(WineFoxReheatedAromaRune))
                 return "COMPREHENSIVE";
@@ -93,17 +90,22 @@ namespace STS2_WineFox_Addons.Hextech
             if (runeType == typeof(WineFoxStoneArmorRune))
                 return "SURVIVAL";
             if (runeType == typeof(WineFoxMyriadDepotRune))
-                return "DRAW";
+                return "RESOURCE";
             if (runeType == typeof(WineFoxNetheriteChestplateRune))
                 return "SURVIVAL";
-            if (runeType == typeof(WineFoxSteamPreludeRune))
-                return "RESOURCE";
+            if (runeType == typeof(WineFoxAssemblyLineRune))
+                return "DRAW";
+            if (runeType == typeof(WineFoxTravelingTroveRune))
+                return "RANDOM";
             if (runeType == typeof(WineFoxBackpackCollectorRune))
                 return "COMPREHENSIVE";
             if (runeType == typeof(WineFoxLogisticsRune))
                 return "MULTIPLAYER";
             if (runeType == typeof(WineFoxUpgradeGearRune))
-                return "RESOURCE";
+                return "COMPREHENSIVE";
+            if (runeType == typeof(WineFoxMaterialSparkRune) ||
+                runeType == typeof(WineFoxMaterialBlastRune))
+                return "OUTPUT";
 
             return "COMPREHENSIVE";
         }
