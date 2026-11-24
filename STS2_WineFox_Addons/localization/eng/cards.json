@@ -2,5 +2,7 @@
   "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.title": "Self-Sufficient",
   "STS2_WINE_FOX_ADDONS_CARD_SELF_SUFFICIENT.description": "At the end of combat, add {Food:diff()} random [gold]Food[/gold] to your rewards.",
   "STS2_WINE_FOX_ADDON_RECYCLING_RUNE_CHOOSE": "Choose any number of cards to Exhaust",
-  "STS2_WINE_FOX_ADDON_UPGRADE_GEAR_RUNE_CHOOSE": "Choose cards to upgrade"
+  "STS2_WINE_FOX_ADDON_UPGRADE_GEAR_RUNE_CHOOSE": "Choose cards to upgrade",
+  "STS2_WINE_FOX_ADDON_CHANGE_EQUIPMENT_RUNE_CHOOSE": "Choose up to {Amount} cards to shuffle into your draw pile",
+  "STS2_WINE_FOX_ADDON_PROCESS_CONVERSION_RUNE_CHOOSE": "Choose a card to transform into Preprocessing"
 }

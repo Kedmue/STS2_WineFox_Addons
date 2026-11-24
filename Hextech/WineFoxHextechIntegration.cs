@@ -41,6 +41,10 @@ namespace STS2_WineFox_Addons.Hextech
                 WineFoxRecyclingRunePatch.Install(logger);
                 WineFoxUpgradeGearRunePatch.Install(logger);
                 WineFoxUniversalStressRunePatch.Install(logger);
+                WineFoxLaunchPlatformRunePatch.Install(logger);
+                WineFoxProductionDocumentRunePatch.Install(logger);
+                WineFoxArmToTeethRunePatch.Install(logger);
+                WineFoxChangeEquipmentRunePatch.Install(logger);
                 WineFoxRuneSelectionFooterPatch.Install(logger);
                 WineFoxLegacyInnateMarkerPatch.Install(logger);
 

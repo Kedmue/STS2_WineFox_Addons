@@ -35,6 +35,14 @@ namespace STS2_WineFox_Addons.Hextech
             typeof(WineFoxAlterPathRune),
             typeof(WineFoxFeastPreparationRune),
             typeof(WineFoxUniversalStressRune),
+            typeof(WineFoxLaunchPlatformRune),
+            typeof(WineFoxSpiritFoxFormRune),
+            typeof(WineFoxProductionDocumentRune),
+            typeof(WineFoxArmToTeethRune),
+            typeof(WineFoxMaterialCarryoverRune),
+            typeof(WineFoxDazedRecallRune),
+            typeof(WineFoxChangeEquipmentRune),
+            typeof(WineFoxProcessConversionRune),
         ];
 
         public static bool IsWineFoxRune(RelicModel? relic)
@@ -49,7 +57,9 @@ namespace STS2_WineFox_Addons.Hextech
                 runeType == typeof(WineFoxTravelingTroveRune) ||
                 runeType == typeof(WineFoxBackpackCollectorRune) ||
                 runeType == typeof(WineFoxRichVeinRune) ||
-                runeType == typeof(WineFoxFeastPreparationRune))
+                runeType == typeof(WineFoxFeastPreparationRune) ||
+                runeType == typeof(WineFoxSpiritFoxFormRune) ||
+                runeType == typeof(WineFoxMaterialCarryoverRune))
                 return "Prismatic";
             if (runeType == typeof(WineFoxMaterialBlastRune) ||
                 runeType == typeof(WineFoxNetheriteChestplateRune) ||
@@ -59,7 +69,11 @@ namespace STS2_WineFox_Addons.Hextech
                 runeType == typeof(WineFoxLogisticsRune) ||
                 runeType == typeof(WineFoxRecyclingRune) ||
                 runeType == typeof(WineFoxAlterPathRune) ||
-                runeType == typeof(WineFoxUniversalStressRune))
+                runeType == typeof(WineFoxUniversalStressRune) ||
+                runeType == typeof(WineFoxLaunchPlatformRune) ||
+                runeType == typeof(WineFoxProductionDocumentRune) ||
+                runeType == typeof(WineFoxArmToTeethRune) ||
+                runeType == typeof(WineFoxProcessConversionRune))
                 return "Gold";
 
             return "Silver";
@@ -88,7 +102,8 @@ namespace STS2_WineFox_Addons.Hextech
                 return "MATERIAL";
             if (runeType == typeof(WineFoxMechanicalSawRune) ||
                 runeType == typeof(WineFoxSteamPreludeRune) ||
-                runeType == typeof(WineFoxUniversalStressRune))
+                runeType == typeof(WineFoxUniversalStressRune) ||
+                runeType == typeof(WineFoxLaunchPlatformRune))
                 return "STRESS";
             if (runeType == typeof(WineFoxReheatedAromaRune))
                 return "COMPREHENSIVE";
@@ -114,8 +129,19 @@ namespace STS2_WineFox_Addons.Hextech
                 runeType == typeof(WineFoxMaterialBlastRune))
                 return "OUTPUT";
             if (runeType == typeof(WineFoxAlterPathRune) ||
-                runeType == typeof(WineFoxFeastPreparationRune))
+                runeType == typeof(WineFoxFeastPreparationRune) ||
+                runeType == typeof(WineFoxSpiritFoxFormRune))
                 return "COMPREHENSIVE";
+            if (runeType == typeof(WineFoxProductionDocumentRune))
+                return "SURVIVAL";
+            if (runeType == typeof(WineFoxArmToTeethRune))
+                return "OUTPUT";
+            if (runeType == typeof(WineFoxMaterialCarryoverRune) ||
+                runeType == typeof(WineFoxProcessConversionRune))
+                return "MATERIAL";
+            if (runeType == typeof(WineFoxDazedRecallRune) ||
+                runeType == typeof(WineFoxChangeEquipmentRune))
+                return "DRAW";
 
             return "COMPREHENSIVE";
         }

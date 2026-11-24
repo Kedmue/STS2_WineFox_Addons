@@ -34,7 +34,17 @@ namespace STS2_WineFox_Addons.Hextech
                 [typeof(WineFoxRecyclingRune)] = typeof(Recycling),
                 [typeof(WineFoxUpgradeGearRune)] = typeof(UpgradeGear),
                 [typeof(WineFoxAlterPathRune)] = typeof(AlterPath),
+                [typeof(WineFoxLaunchPlatformRune)] = typeof(LaunchPlatform),
+                [typeof(WineFoxSpiritFoxFormRune)] = typeof(SpiritFoxForm),
+                [typeof(WineFoxProductionDocumentRune)] = typeof(ProductionDocument),
+                [typeof(WineFoxArmToTeethRune)] = typeof(ArmToTeeth),
+                [typeof(WineFoxChangeEquipmentRune)] = typeof(ChangeEquipment),
             };
+
+        public static bool IsUpgradeRune(Type runeType)
+        {
+            return UpgradeCardTypes.ContainsKey(runeType);
+        }
 
         public static bool TryGetSelectionFooter(
             RelicModel? rune,

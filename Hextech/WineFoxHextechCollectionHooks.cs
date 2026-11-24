@@ -277,6 +277,7 @@ namespace STS2_WineFox_Addons.Hextech
             var orderedTypes = WineFoxHextechContent.RuneTypes
                 .Select((type, index) => (Type: type, Index: index))
                 .OrderBy(entry => WineFoxHextechContent.GetRaritySortOrder(entry.Type))
+                .ThenBy(entry => WineFoxRuneCardGrant.IsUpgradeRune(entry.Type) ? 1 : 0)
                 .ThenBy(entry => entry.Index);
 
             foreach (var entry in orderedTypes)
