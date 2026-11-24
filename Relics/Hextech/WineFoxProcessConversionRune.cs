@@ -13,7 +13,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace STS2_WineFox_Addons.Hextech
 {
     /// <summary>
-    /// 在你的回合开始时，选择一张手牌变化为未升级的“预处理”。
+    /// 在你的回合开始时，选择一张手牌变化为“预处理”。
     /// </summary>
     public sealed class WineFoxProcessConversionRune : ModRelicTemplate
     {

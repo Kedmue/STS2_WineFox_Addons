@@ -34,7 +34,6 @@ namespace STS2_WineFox_Addons.Hextech
         [
             HoverTipFactory.FromCard<SpiritFoxForm>(false),
             HoverTipFactory.FromPower<SlowPower>(),
-            HoverTipFactory.FromPower<SpiritFoxFormPower>(),
         ];
 
         [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
